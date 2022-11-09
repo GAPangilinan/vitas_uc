@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "425264387947",
+    "project_id": "vitas-796ff",
+    "storage_bucket": "vitas-796ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:425264387947:android:4b7febd1829a2776271e2e",
+        "android_client_info": {
+          "package_name": "com.example.project_vitas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "425264387947-j8joo5muhc03c38cd401ab2r6gnhoips.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxhTYzIzfb2tZKEWKeo90vTrfSQdKiqQE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "425264387947-j8joo5muhc03c38cd401ab2r6gnhoips.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:425264387947:android:d7238e7c9abb3711271e2e",
+        "android_client_info": {
+          "package_name": "com.example.vitas_uc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "425264387947-j8joo5muhc03c38cd401ab2r6gnhoips.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxhTYzIzfb2tZKEWKeo90vTrfSQdKiqQE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "425264387947-j8joo5muhc03c38cd401ab2r6gnhoips.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
