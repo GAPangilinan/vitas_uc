@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vitas/models/vitasmodel.dart';
-import 'package:vitas/screens/home/vitas_list.dart';
+import 'package:vitas_uc/models/vitasmodel.dart';
+import 'package:vitas_uc/screens/home/vitas_list.dart';
 
 class VitasTile extends StatelessWidget {
   //const VitasTile({super.key});

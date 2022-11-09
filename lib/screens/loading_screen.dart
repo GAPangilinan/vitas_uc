@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:vitas/screens/authenticate/sign_in.dart';
-import 'package:vitas/screens/loading_screen.dart';
-import 'package:vitas/services/loading_auth.dart';
+import 'package:vitas_uc/screens/authenticate/sign_in.dart';
+import 'package:vitas_uc/screens/loading_screen.dart';
+import 'package:vitas_uc/services/loading_auth.dart';
 
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({super.key});

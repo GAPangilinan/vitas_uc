@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:vitas/models/vitasmodel.dart';
-import 'package:vitas/screens/home_screen.dart';
-import 'package:vitas/screens/qrscanner_screen.dart';
-import 'package:vitas/services/auth.dart';
-import 'package:vitas/services/database.dart';
+import 'package:vitas_uc/models/vitasmodel.dart';
+import 'package:vitas_uc/screens/home_screen.dart';
+import 'package:vitas_uc/screens/qrscanner_screen.dart';
+import 'package:vitas_uc/services/auth.dart';
+import 'package:vitas_uc/services/database.dart';
 
 class BetScreen extends StatelessWidget {
   // const BetScreen({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vitas/services/auth.dart';
-import 'package:vitas/shared/constants.dart';
-import 'package:vitas/shared/loading.dart';
+import 'package:vitas_uc/services/auth.dart';
+import 'package:vitas_uc/shared/constants.dart';
+import 'package:vitas_uc/shared/loading.dart';
 
 class Register extends StatefulWidget {
   //const Register({super.key});

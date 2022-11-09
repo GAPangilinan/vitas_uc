@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vitas/unusedModules/authenticate/register.dart';
-import 'package:vitas/screens/authenticate/sign_in.dart';
+import 'package:vitas_uc/unusedModules/authenticate/register.dart';
+import 'package:vitas_uc/screens/authenticate/sign_in.dart';
 
 class Authenticate extends StatefulWidget {
   const Authenticate({super.key});

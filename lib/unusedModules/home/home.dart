@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:vitas/models/vitasmodel.dart';
-import 'package:vitas/screens/home/vitas_list.dart';
-import 'package:vitas/screens/qrscanner_screen.dart';
-import 'package:vitas/services/auth.dart';
-import 'package:vitas/services/database.dart';
+import 'package:vitas_uc/models/vitasmodel.dart';
+import 'package:vitas_uc/screens/home/vitas_list.dart';
+import 'package:vitas_uc/screens/qrscanner_screen.dart';
+import 'package:vitas_uc/services/auth.dart';
+import 'package:vitas_uc/services/database.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 

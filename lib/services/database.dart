@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
-import 'package:vitas/models/vitasmodel.dart';
+import 'package:vitas_uc/models/vitasmodel.dart';
 
 class DatabaseService {
   final String uid;

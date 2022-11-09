@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:provider/provider.dart';
-import 'package:vitas/models/user_model.dart';
-import 'package:vitas/screens/wrapper.dart';
-import 'package:vitas/services/auth.dart';
-import 'package:vitas/services/database.dart';
+import 'package:vitas_uc/models/user_model.dart';
+import 'package:vitas_uc/screens/wrapper.dart';
+import 'package:vitas_uc/services/auth.dart';
+import 'package:vitas_uc/services/database.dart';
 
 class AuthLoadingService extends StatelessWidget {
   const AuthLoadingService({super.key});
