@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vitas_uc/models/vitasmodel.dart';
-import 'package:vitas_uc/screens/home_screen.dart';
+import 'package:vitas_uc/screens/home/cashin/cashin_homescreen.dart';
 import 'package:vitas_uc/screens/qrscanner_screen.dart';
 import 'package:vitas_uc/services/auth.dart';
 import 'package:vitas_uc/services/database.dart';
 
-class BetScreen extends StatelessWidget {
-  // const BetScreen({super.key});
+class FightBetScreen extends StatelessWidget {
+  // const FightBetScreen({super.key});
 
   final AuthService _auth = AuthService();
   TextEditingController amountController = TextEditingController();
@@ -124,7 +124,18 @@ class BetScreen extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          'CASH IN',
+                          'FIGHT NO: 1',
+                          style: TextStyle(
+                            fontSize: 19,
+                            color: Color.fromRGBO(102, 102, 102, 1),
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 3.0,
+                            fontFamily: 'Roboto',
+                          ),
+                        ),
+                        SizedBox(width: 150),
+                        Text(
+                          'OPEN',
                           style: TextStyle(
                             fontSize: 19,
                             color: Color.fromRGBO(54, 191, 54, 1),
@@ -152,12 +163,33 @@ class BetScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 10),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Important:',
+                        'MERON',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 3.0,
+                          fontFamily: 'Roboto',
+                        ),
+                      ),
+                      Text(
+                        'VS',
                         style: TextStyle(
                           fontSize: 10,
                           color: Color.fromRGBO(102, 102, 102, 1),
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 3.0,
+                          fontFamily: 'Roboto',
+                        ),
+                      ),
+                      Text(
+                        'WALA',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.blue,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 3.0,
                           fontFamily: 'Roboto',
@@ -167,12 +199,106 @@ class BetScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 10),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'By using this cash in facility, you agree that \nthe amount will be credited to your card with a\nminimum fee of (0.00). \n\nUpon confirmation of the transaction, the \namount credited to the card is non refundable \nand can not be reversed.',
+                        'Talisayin',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 3.0,
+                          fontFamily: 'Roboto',
+                        ),
+                      ),
+                      Text(
+                        'BREED',
                         style: TextStyle(
                           fontSize: 10,
                           color: Color.fromRGBO(102, 102, 102, 1),
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 3.0,
+                          fontFamily: 'Roboto',
+                        ),
+                      ),
+                      Text(
+                        'Roundhed',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 3.0,
+                          fontFamily: 'Roboto',
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Pedro Martinez',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 3.0,
+                          fontFamily: 'Roboto',
+                        ),
+                      ),
+                      SizedBox(width: 1),
+                      Text(
+                        'OWNER',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Color.fromRGBO(102, 102, 102, 1),
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 3.0,
+                          fontFamily: 'Roboto',
+                        ),
+                      ),
+                      Text(
+                        'Ronald Marasigan',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 3.0,
+                          fontFamily: 'Roboto',
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        '100,000,000.00',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 3.0,
+                          fontFamily: 'Roboto',
+                        ),
+                      ),
+                      Text(
+                        'BET',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Color.fromRGBO(102, 102, 102, 1),
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 3.0,
+                          fontFamily: 'Roboto',
+                        ),
+                      ),
+                      Text(
+                        '100,000,000.00',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.blue,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 3.0,
                           fontFamily: 'Roboto',

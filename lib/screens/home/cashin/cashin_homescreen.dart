@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vitas_uc/models/vitasmodel.dart';
 import 'package:vitas_uc/screens/betscreen/cashin_betscreen/cashin_betscreen.dart';
+import 'package:vitas_uc/screens/qrscanner_screen.dart';
 import 'package:vitas_uc/services/auth.dart';
 import 'package:vitas_uc/services/database.dart';
 
-class CashoutHomeScreen extends StatelessWidget {
-  //const CashoutHomeScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  //const HomeScreen({super.key});
 
   final AuthService _auth = AuthService();
 
@@ -22,7 +23,6 @@ class CashoutHomeScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Container(
               height: MediaQuery.of(context).size.height * 1,
-              width: MediaQuery.of(context).size.width * 1,
               padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
               decoration: BoxDecoration(
                 image: DecorationImage(
@@ -114,7 +114,7 @@ class CashoutHomeScreen extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          'CASH OUT',
+                          'CASH IN',
                           style: TextStyle(
                             fontSize: 19,
                             color: Color.fromRGBO(54, 191, 54, 1),
@@ -159,7 +159,7 @@ class CashoutHomeScreen extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'By using this cash out facility, you agree that\nthe amount will be debited from your card with\nminimum fee of (50.00). \n\nUpon confirmation of the transaction, the\namoun debited from the card is non refundable\nand can not be reversed.',
+                        'By using this cash in facility, you agree that \nthe amount will be credited to your card with a\nminimum fee of (0.00). \n\nUpon confirmation of the transaction, the \namount credited to the card is non refundable \nand can not be reversed.',
                         textAlign: TextAlign.justify,
                         style: TextStyle(
                           fontSize: 10,
