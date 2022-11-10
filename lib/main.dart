@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vitas_uc/screens/authenticate/forgot_password.dart';
 import 'package:vitas_uc/screens/bet_screen.dart';
+import 'package:vitas_uc/screens/home/cashout/cashout_homescreen.dart';
 import 'package:vitas_uc/screens/home_screen.dart';
 import 'package:vitas_uc/screens/loading_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -34,9 +35,10 @@ class MyApp extends StatelessWidget {
     // );
     return MaterialApp(
       //home: ForgotPasswordPage(),
+      home: CashoutHomeScreen(),
       //home: HomeScreen(),
       //home: BetScreen(),
-      home: LoadingScreen(),
+      //home: LoadingScreen(),
       //home: Home(),
       //home: QRCreateScreen(),
       // home: QRScannerScreen(),
