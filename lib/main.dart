@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:vitas_uc/screens/authenticate/forgot_password.dart';
-import 'package:vitas_uc/screens/bet_screen.dart';
-import 'package:vitas_uc/screens/home_screen.dart';
+import 'package:vitas_uc/screens/betscreen/cashin_betscreen/cashin_betscreen.dart';
+import 'package:vitas_uc/screens/betscreen/cashout_betscreen/cashout_betscreen.dart';
+import 'package:vitas_uc/screens/fight_betscreen/fight_betscreen.dart';
+import 'package:vitas_uc/screens/fight_homescreen/fight_homescreen.dart';
+import 'package:vitas_uc/screens/home/cashout/cashout_homescreen.dart';
+import 'package:vitas_uc/screens/home/cashin/cashin_homescreen.dart';
 import 'package:vitas_uc/screens/loading_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -33,10 +37,14 @@ class MyApp extends StatelessWidget {
     //   ),
     // );
     return MaterialApp(
+      //home: FightBetScreen(),
+      //home: FightHomeScreen(),
       //home: ForgotPasswordPage(),
-      //home: HomeScreen(),
-      //home: BetScreen(),
-      home: LoadingScreen(),
+      //home: CashoutHomeScreen(),
+      //home: CashoutBetScreen(),
+      //home: CashinHomeScreen(),
+      home: CashinBetScreen(),
+      //home: LoadingScreen(),
       //home: Home(),
       //home: QRCreateScreen(),
       // home: QRScannerScreen(),

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vitas_uc/models/vitasmodel.dart';
-import 'package:vitas_uc/screens/home_screen.dart';
-import 'package:vitas_uc/screens/qrscanner_screen.dart';
+import 'package:vitas_uc/screens/home/cashin/cashin_homescreen.dart';
 import 'package:vitas_uc/services/auth.dart';
 import 'package:vitas_uc/services/database.dart';
 
-class BetScreen extends StatelessWidget {
-  // const BetScreen({super.key});
+class CashoutBetScreen extends StatelessWidget {
+  // const CashoutBetScreen({super.key});
 
   final AuthService _auth = AuthService();
   TextEditingController amountController = TextEditingController();
@@ -124,7 +123,7 @@ class BetScreen extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          'CASH IN',
+                          'CASH OUT',
                           style: TextStyle(
                             fontSize: 19,
                             color: Color.fromRGBO(54, 191, 54, 1),
@@ -169,7 +168,7 @@ class BetScreen extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'By using this cash in facility, you agree that \nthe amount will be credited to your card with a\nminimum fee of (0.00). \n\nUpon confirmation of the transaction, the \namount credited to the card is non refundable \nand can not be reversed.',
+                        'By using this cash out facility, you agree that\nthe amount will be debited from your card with\nminimum fee of (50.00). \n\nUpon confirmation of the transaction, the\namoun debited from the card is non refundable\nand can not be reversed.',
                         style: TextStyle(
                           fontSize: 10,
                           color: Color.fromRGBO(102, 102, 102, 1),
@@ -218,14 +217,7 @@ class BetScreen extends StatelessWidget {
                           height: 53,
                           onPressed: () async {
                             amount = 100;
-                            numOne = FinalResultAmount;
-                            FinalResultAmount = numOne + amount;
-                            if (amountController.text.isNotEmpty) {
-                              amountController.text =
-                                  FinalResultAmount.toString();
-                            } else {
-                              amountController.text = amount.toString();
-                            }
+                            amountController.text = amount.toString();
                           },
                           child: Text(
                             'Min',
@@ -251,14 +243,7 @@ class BetScreen extends StatelessWidget {
                           height: 53,
                           onPressed: () async {
                             amount = 300;
-                            numOne = FinalResultAmount;
-                            FinalResultAmount = numOne + amount;
-                            if (amountController.text.isNotEmpty) {
-                              amountController.text =
-                                  FinalResultAmount.toString();
-                            } else {
-                              amountController.text = amount.toString();
-                            }
+                            amountController.text = amount.toString();
                           },
                           child: Text(
                             '300',
@@ -284,14 +269,7 @@ class BetScreen extends StatelessWidget {
                           height: 53,
                           onPressed: () async {
                             amount = 500;
-                            numOne = FinalResultAmount;
-                            FinalResultAmount = numOne + amount;
-                            if (amountController.text.isNotEmpty) {
-                              amountController.text =
-                                  FinalResultAmount.toString();
-                            } else {
-                              amountController.text = amount.toString();
-                            }
+                            amountController.text = amount.toString();
                           },
                           child: Text(
                             '500',
@@ -317,14 +295,7 @@ class BetScreen extends StatelessWidget {
                           height: 53,
                           onPressed: () async {
                             amount = 1000;
-                            numOne = FinalResultAmount;
-                            FinalResultAmount = numOne + amount;
-                            if (amountController.text.isNotEmpty) {
-                              amountController.text =
-                                  FinalResultAmount.toString();
-                            } else {
-                              amountController.text = amount.toString();
-                            }
+                            amountController.text = amount.toString();
                           },
                           child: Text(
                             '1000',
@@ -354,14 +325,7 @@ class BetScreen extends StatelessWidget {
                           height: 53,
                           onPressed: () async {
                             amount = 2000;
-                            numOne = FinalResultAmount;
-                            FinalResultAmount = numOne + amount;
-                            if (amountController.text.isNotEmpty) {
-                              amountController.text =
-                                  FinalResultAmount.toString();
-                            } else {
-                              amountController.text = amount.toString();
-                            }
+                            amountController.text = amount.toString();
                           },
                           child: Text(
                             '2000',
@@ -387,14 +351,7 @@ class BetScreen extends StatelessWidget {
                           height: 53,
                           onPressed: () async {
                             amount = 3000;
-                            numOne = FinalResultAmount;
-                            FinalResultAmount = numOne + amount;
-                            if (amountController.text.isNotEmpty) {
-                              amountController.text =
-                                  FinalResultAmount.toString();
-                            } else {
-                              amountController.text = amount.toString();
-                            }
+                            amountController.text = amount.toString();
                           },
                           child: Text(
                             '3000',
@@ -420,14 +377,7 @@ class BetScreen extends StatelessWidget {
                           height: 53,
                           onPressed: () async {
                             amount = 5000;
-                            numOne = FinalResultAmount;
-                            FinalResultAmount = numOne + amount;
-                            if (amountController.text.isNotEmpty) {
-                              amountController.text =
-                                  FinalResultAmount.toString();
-                            } else {
-                              amountController.text = amount.toString();
-                            }
+                            amountController.text = amount.toString();
                           },
                           child: Text(
                             '5000',
@@ -453,14 +403,7 @@ class BetScreen extends StatelessWidget {
                           height: 53,
                           onPressed: () async {
                             amount = 10000;
-                            numOne = FinalResultAmount;
-                            FinalResultAmount = numOne + amount;
-                            if (amountController.text.isNotEmpty) {
-                              amountController.text =
-                                  FinalResultAmount.toString();
-                            } else {
-                              amountController.text = amount.toString();
-                            }
+                            amountController.text = amount.toString();
                           },
                           child: Text(
                             'Max',
