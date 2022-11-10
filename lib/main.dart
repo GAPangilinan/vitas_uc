@@ -37,13 +37,13 @@ class MyApp extends StatelessWidget {
     //   ),
     // );
     return MaterialApp(
-      home: FightBetScreen(),
+      //home: FightBetScreen(),
       //home: FightHomeScreen(),
       //home: ForgotPasswordPage(),
       //home: CashoutHomeScreen(),
-      //home: HomeScreen(),
       //home: CashoutBetScreen(),
-      //home: BetScreen(),
+      //home: CashinHomeScreen(),
+      home: CashinBetScreen(),
       //home: LoadingScreen(),
       //home: Home(),
       //home: QRCreateScreen(),

@@ -344,14 +344,7 @@ class FightBetScreen extends StatelessWidget {
                           height: 53,
                           onPressed: () async {
                             amount = 100;
-                            numOne = FinalResultAmount;
-                            FinalResultAmount = numOne + amount;
-                            if (amountController.text.isNotEmpty) {
-                              amountController.text =
-                                  FinalResultAmount.toString();
-                            } else {
-                              amountController.text = amount.toString();
-                            }
+                            amountController.text = amount.toString();
                           },
                           child: Text(
                             'Min',
@@ -377,14 +370,7 @@ class FightBetScreen extends StatelessWidget {
                           height: 53,
                           onPressed: () async {
                             amount = 300;
-                            numOne = FinalResultAmount;
-                            FinalResultAmount = numOne + amount;
-                            if (amountController.text.isNotEmpty) {
-                              amountController.text =
-                                  FinalResultAmount.toString();
-                            } else {
-                              amountController.text = amount.toString();
-                            }
+                            amountController.text = amount.toString();
                           },
                           child: Text(
                             '300',
@@ -410,14 +396,7 @@ class FightBetScreen extends StatelessWidget {
                           height: 53,
                           onPressed: () async {
                             amount = 500;
-                            numOne = FinalResultAmount;
-                            FinalResultAmount = numOne + amount;
-                            if (amountController.text.isNotEmpty) {
-                              amountController.text =
-                                  FinalResultAmount.toString();
-                            } else {
-                              amountController.text = amount.toString();
-                            }
+                            amountController.text = amount.toString();
                           },
                           child: Text(
                             '500',
@@ -443,14 +422,7 @@ class FightBetScreen extends StatelessWidget {
                           height: 53,
                           onPressed: () async {
                             amount = 1000;
-                            numOne = FinalResultAmount;
-                            FinalResultAmount = numOne + amount;
-                            if (amountController.text.isNotEmpty) {
-                              amountController.text =
-                                  FinalResultAmount.toString();
-                            } else {
-                              amountController.text = amount.toString();
-                            }
+                            amountController.text = amount.toString();
                           },
                           child: Text(
                             '1000',
@@ -480,14 +452,7 @@ class FightBetScreen extends StatelessWidget {
                           height: 53,
                           onPressed: () async {
                             amount = 2000;
-                            numOne = FinalResultAmount;
-                            FinalResultAmount = numOne + amount;
-                            if (amountController.text.isNotEmpty) {
-                              amountController.text =
-                                  FinalResultAmount.toString();
-                            } else {
-                              amountController.text = amount.toString();
-                            }
+                            amountController.text = amount.toString();
                           },
                           child: Text(
                             '2000',
@@ -513,14 +478,7 @@ class FightBetScreen extends StatelessWidget {
                           height: 53,
                           onPressed: () async {
                             amount = 3000;
-                            numOne = FinalResultAmount;
-                            FinalResultAmount = numOne + amount;
-                            if (amountController.text.isNotEmpty) {
-                              amountController.text =
-                                  FinalResultAmount.toString();
-                            } else {
-                              amountController.text = amount.toString();
-                            }
+                            amountController.text = amount.toString();
                           },
                           child: Text(
                             '3000',
@@ -547,13 +505,7 @@ class FightBetScreen extends StatelessWidget {
                           onPressed: () async {
                             amount = 5000;
                             numOne = FinalResultAmount;
-                            FinalResultAmount = numOne + amount;
-                            if (amountController.text.isNotEmpty) {
-                              amountController.text =
-                                  FinalResultAmount.toString();
-                            } else {
-                              amountController.text = amount.toString();
-                            }
+                            amountController.text = amount.toString();
                           },
                           child: Text(
                             '5000',
@@ -579,14 +531,7 @@ class FightBetScreen extends StatelessWidget {
                           height: 53,
                           onPressed: () async {
                             amount = 10000;
-                            numOne = FinalResultAmount;
-                            FinalResultAmount = numOne + amount;
-                            if (amountController.text.isNotEmpty) {
-                              amountController.text =
-                                  FinalResultAmount.toString();
-                            } else {
-                              amountController.text = amount.toString();
-                            }
+                            amountController.text = amount.toString();
                           },
                           child: Text(
                             'Max',
