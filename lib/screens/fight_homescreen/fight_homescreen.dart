@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vitas_uc/models/vitasmodel.dart';
 import 'package:vitas_uc/screens/betscreen/cashin_betscreen/cashin_betscreen.dart';
+import 'package:vitas_uc/screens/fight_betscreen/fight_betscreen.dart';
 import 'package:vitas_uc/screens/qrscanner_screen.dart';
 import 'package:vitas_uc/services/auth.dart';
 import 'package:vitas_uc/services/database.dart';
@@ -318,7 +319,7 @@ class FightHomeScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => BetScreen()),
+                                  builder: (context) => FightBetScreen()),
                             );
                           },
                         ),
