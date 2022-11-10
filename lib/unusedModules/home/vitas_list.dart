@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vitas_uc/models/vitasmodel.dart';
-import 'package:vitas_uc/screens/home/vitas_tile.dart';
+import 'package:vitas_uc/unusedModules/home/vitas_tile.dart';
 
 class VitasList extends StatefulWidget {
   //const VitasList({super.key});
