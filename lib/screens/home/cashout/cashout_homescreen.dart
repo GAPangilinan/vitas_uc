@@ -159,7 +159,7 @@ class CashoutHomeScreen extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'By using this cash out facility, you agree that\nthe amount will be debited from your card with\nminimum fee of (50.00). \n\nUpon confirmation of the transaction, the\namoun debited from the card is non refundabl\nand can not be reversed.',
+                        'By using this cash out facility, you agree that\nthe amount will be debited from your card with\nminimum fee of (50.00). \n\nUpon confirmation of the transaction, the\namoun debited from the card is non refundable\nand can not be reversed.',
                         textAlign: TextAlign.justify,
                         style: TextStyle(
                           fontSize: 10,
