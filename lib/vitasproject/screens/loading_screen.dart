@@ -5,23 +5,25 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:vitas_uc/screens/authenticate/sign_in.dart';
 import 'package:vitas_uc/screens/loading_screen.dart';
 import 'package:vitas_uc/services/loading_auth.dart';
+import 'package:vitas_uc/vitasproject/screens/register.dart';
+import 'package:vitas_uc/vitasproject/screens/sign_in.dart';
 
-class LoadingScreenOld extends StatefulWidget {
-  const LoadingScreenOld({super.key});
+class LoadingScreen extends StatefulWidget {
+  const LoadingScreen({super.key});
 
   @override
-  State<LoadingScreenOld> createState() => _LoadingScreenOldState();
+  State<LoadingScreen> createState() => _LoadingScreenState();
 }
 
-class _LoadingScreenOldState extends State<LoadingScreenOld> {
+class _LoadingScreenState extends State<LoadingScreen> {
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     Timer(
         Duration(seconds: 3),
-        () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => AuthLoadingService())));
+        () => Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (BuildContext context) => Register())));
   }
 
   @override

@@ -9,17 +9,17 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../services/loading_auth.dart';
 
-class SignIn extends StatefulWidget {
-  //const SignIn({super.key});
+class SignInOld extends StatefulWidget {
+  //const SignInOld({super.key});
 
   final Function? toggleView;
-  SignIn({this.toggleView});
+  SignInOld({this.toggleView});
 
   @override
-  State<SignIn> createState() => _SignInState();
+  State<SignInOld> createState() => _SignInOldState();
 }
 
-class _SignInState extends State<SignIn> {
+class _SignInOldState extends State<SignInOld> {
   bool _isObscure3 = true;
   bool isChecked = false; //boolean for checkbox of remember me
   TextEditingController emailController = TextEditingController();
@@ -222,7 +222,7 @@ class _SignInState extends State<SignIn> {
                             onPressed: () => Navigator.of(context).push(
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        ForgotPasswordPage())),
+                                        ForgotPasswordPageOld())),
                           ),
                         ],
                       ),

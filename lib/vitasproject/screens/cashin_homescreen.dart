@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vitas_uc/models/vitasmodel.dart';
@@ -5,9 +6,11 @@ import 'package:vitas_uc/screens/betscreen/cashin_betscreen/cashin_betscreen.dar
 import 'package:vitas_uc/screens/qrscanner_screen.dart';
 import 'package:vitas_uc/services/auth.dart';
 import 'package:vitas_uc/services/database.dart';
+import 'package:vitas_uc/vitasproject/screens/cashin_betscreen.dart';
+import 'package:vitas_uc/vitasproject/screens/sign_in.dart';
 
-class CashinHomeScreenOld extends StatelessWidget {
-  //const CashinHomeScreenOld({super.key});
+class CashinHomeScreen extends StatelessWidget {
+  //const HomeScreen({super.key});
 
   final AuthService _auth = AuthService();
 
@@ -61,8 +64,8 @@ class CashinHomeScreenOld extends StatelessWidget {
                           icon: Icon(Icons.login_rounded),
                           iconSize: 30,
                           color: Colors.grey[700],
-                          onPressed: () async {
-                            await _auth.signOut();
+                          onPressed: () {
+                            logout(context);
                           },
                         ),
                       ],
@@ -191,7 +194,7 @@ class CashinHomeScreenOld extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => CashinBetScreenOld()),
+                                  builder: (context) => CashinBetScreen()),
                             );
                           },
                         ),
@@ -219,6 +222,17 @@ class CashinHomeScreenOld extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Future<void> logout(BuildContext context) async {
+    CircularProgressIndicator();
+    await FirebaseAuth.instance.signOut();
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => SignIn(),
       ),
     );
   }

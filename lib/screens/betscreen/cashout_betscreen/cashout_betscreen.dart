@@ -6,8 +6,8 @@ import 'package:vitas_uc/screens/home/cashout/cashout_homescreen.dart';
 import 'package:vitas_uc/services/auth.dart';
 import 'package:vitas_uc/services/database.dart';
 
-class CashoutBetScreen extends StatelessWidget {
-  // const CashoutBetScreen({super.key});
+class CashoutBetScreenOld extends StatelessWidget {
+  // const CashoutBetScreenOld({super.key});
 
   final AuthService _auth = AuthService();
   TextEditingController amountController = TextEditingController();
@@ -459,7 +459,7 @@ class CashoutBetScreen extends StatelessWidget {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    CashoutHomeScreen()));
+                                                    CashoutHomeScreenOld()));
                                       },
                                     ),
                                     TextButton(
@@ -580,7 +580,7 @@ class CashoutBetScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => CashoutHomeScreen()),
+                                  builder: (context) => CashoutHomeScreenOld()),
                             );
                           },
                           child: Text(

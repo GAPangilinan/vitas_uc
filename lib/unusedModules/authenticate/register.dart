@@ -3,17 +3,17 @@ import 'package:vitas_uc/services/auth.dart';
 import 'package:vitas_uc/shared/constants.dart';
 import 'package:vitas_uc/shared/loading.dart';
 
-class Register extends StatefulWidget {
-  //const Register({super.key});
+class RegisterOld extends StatefulWidget {
+  //const RegisterOld({super.key});
 
   final Function toggleView;
-  Register({required this.toggleView});
+  RegisterOld({required this.toggleView});
 
   @override
-  State<Register> createState() => _RegisterState();
+  State<RegisterOld> createState() => _RegisterOldState();
 }
 
-class _RegisterState extends State<Register> {
+class _RegisterOldState extends State<RegisterOld> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   bool loading = false;

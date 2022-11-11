@@ -10,6 +10,9 @@ import 'package:vitas_uc/screens/loading_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:vitas_uc/screens/loading_screen.dart';
+import 'package:vitas_uc/unusedModules/authenticate/register.dart';
+import 'package:vitas_uc/vitasproject/screens/loading_screen.dart';
+import 'package:vitas_uc/vitasproject/screens/register.dart';
 
 Future<void> main() async {
   await Hive.initFlutter();
@@ -23,32 +26,53 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    // return StreamProvider<UserModel?>.value(
-    //   initialData: null,
-    //   value: AuthService().user,
-    //   child: MaterialApp(
-    //     home: Wrapper(),
-    //   ),
-    // );
     return MaterialApp(
-      //home: FightBetScreen(),
-      //home: FightHomeScreen(),
-      //home: ForgotPasswordPage(),
-      //home: CashoutHomeScreen(),
-      //home: CashoutBetScreen(),
-      //home: CashinHomeScreen(),
-      //home: CashinBetScreen(),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: Colors.blue[900],
+      ),
       home: LoadingScreen(),
-      //home: Home(),
-      //home: QRCreateScreen(),
-      // home: QRScannerScreen(),
-      //home: CameraQR(),
+      //home: Register(),
     );
   }
 }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   // This widget is the root of your application.
+//   @override
+//   Widget build(BuildContext context) {
+//     // return StreamProvider<UserModel?>.value(
+//     //   initialData: null,
+//     //   value: AuthService().user,
+//     //   child: MaterialApp(
+//     //     home: Wrapper(),
+//     //   ),
+//     // );
+//     return MaterialApp(
+//         //home: FightBetScreen(),
+//         //home: FightHomeScreen(),
+//         //home: ForgotPasswordPage(),
+//         //home: CashoutHomeScreen(),
+//         //home: CashoutBetScreen(),
+//         //home: CashinHomeScreen(),
+//         //home: CashinBetScreen(),
+//         //home: LoadingScreen(),
+//         //home: Home(),
+//         //home: QRCreateScreen(),
+//         // home: QRScannerScreen(),
+//         //home: CameraQR(),
+//         );
+//   }
+// }

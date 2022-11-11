@@ -6,15 +6,14 @@ import 'package:flutter/material.dart';
 
 import '../../services/loading_auth.dart';
 
-class ForgotPasswordPageOld extends StatefulWidget {
-  const ForgotPasswordPageOld({super.key});
+class ForgotPasswordPage extends StatefulWidget {
+  const ForgotPasswordPage({super.key});
 
   @override
-  State<ForgotPasswordPageOld> createState() =>
-      _ForgotPasswordPageOldPageState();
+  State<ForgotPasswordPage> createState() => _ForgotPasswordPageState();
 }
 
-class _ForgotPasswordPageOldPageState extends State<ForgotPasswordPageOld> {
+class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   String _email = '';
   bool visible = false;
   final _formKey = GlobalKey<FormState>();

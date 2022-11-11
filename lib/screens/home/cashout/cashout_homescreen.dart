@@ -6,8 +6,8 @@ import 'package:vitas_uc/screens/betscreen/cashout_betscreen/cashout_betscreen.d
 import 'package:vitas_uc/services/auth.dart';
 import 'package:vitas_uc/services/database.dart';
 
-class CashoutHomeScreen extends StatelessWidget {
-  //const CashoutHomeScreen({super.key});
+class CashoutHomeScreenOld extends StatelessWidget {
+  //const CashoutHomeScreenOld({super.key});
 
   final AuthService _auth = AuthService();
 
@@ -192,7 +192,7 @@ class CashoutHomeScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => CashoutBetScreen()),
+                                  builder: (context) => CashoutBetScreenOld()),
                             );
                           },
                         ),
