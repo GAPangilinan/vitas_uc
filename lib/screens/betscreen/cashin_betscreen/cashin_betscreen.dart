@@ -459,7 +459,7 @@ class CashinBetScreen extends StatelessWidget {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    HomeScreen()));
+                                                    CashinHomeScreen()));
                                       },
                                     ),
                                     TextButton(
@@ -580,7 +580,7 @@ class CashinBetScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => HomeScreen()),
+                                  builder: (context) => CashinHomeScreen()),
                             );
                           },
                           child: Text(

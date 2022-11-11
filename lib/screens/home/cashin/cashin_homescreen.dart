@@ -6,7 +6,7 @@ import 'package:vitas_uc/screens/qrscanner_screen.dart';
 import 'package:vitas_uc/services/auth.dart';
 import 'package:vitas_uc/services/database.dart';
 
-class HomeScreen extends StatelessWidget {
+class CashinHomeScreen extends StatelessWidget {
   //const HomeScreen({super.key});
 
   final AuthService _auth = AuthService();

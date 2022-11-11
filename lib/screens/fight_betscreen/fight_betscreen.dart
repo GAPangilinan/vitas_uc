@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vitas_uc/models/vitasmodel.dart';
+import 'package:vitas_uc/screens/fight_homescreen/fight_homescreen.dart';
 import 'package:vitas_uc/screens/home/cashin/cashin_homescreen.dart';
 import 'package:vitas_uc/screens/qrscanner_screen.dart';
 import 'package:vitas_uc/services/auth.dart';
@@ -586,7 +587,7 @@ class FightBetScreen extends StatelessWidget {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    HomeScreen()));
+                                                    FightHomeScreen()));
                                       },
                                     ),
                                     TextButton(
@@ -707,7 +708,7 @@ class FightBetScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => HomeScreen()),
+                                  builder: (context) => FightHomeScreen()),
                             );
                           },
                           child: Text(

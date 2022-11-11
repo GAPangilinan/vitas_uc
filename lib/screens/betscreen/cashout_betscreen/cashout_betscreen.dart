@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vitas_uc/models/vitasmodel.dart';
 import 'package:vitas_uc/screens/home/cashin/cashin_homescreen.dart';
+import 'package:vitas_uc/screens/home/cashout/cashout_homescreen.dart';
 import 'package:vitas_uc/services/auth.dart';
 import 'package:vitas_uc/services/database.dart';
 
@@ -458,7 +459,7 @@ class CashoutBetScreen extends StatelessWidget {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    HomeScreen()));
+                                                    CashoutHomeScreen()));
                                       },
                                     ),
                                     TextButton(
@@ -579,7 +580,7 @@ class CashoutBetScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => HomeScreen()),
+                                  builder: (context) => CashoutHomeScreen()),
                             );
                           },
                           child: Text(
