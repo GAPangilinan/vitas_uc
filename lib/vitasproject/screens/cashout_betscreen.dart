@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:vitas_uc/models/vitasmodel.dart';
-import 'package:vitas_uc/screens/home/cashin/cashin_homescreen.dart';
-import 'package:vitas_uc/screens/home/cashout/cashout_homescreen.dart';
-import 'package:vitas_uc/services/auth.dart';
-import 'package:vitas_uc/services/database.dart';
+import 'package:vitas_uc/ignoreThisFolder/models/vitasmodel.dart';
+import 'package:vitas_uc/ignoreThisFolder/screens/home/cashin/cashin_homescreen.dart';
+import 'package:vitas_uc/ignoreThisFolder/screens/home/cashout/cashout_homescreen.dart';
+import 'package:vitas_uc/ignoreThisFolder/services/auth.dart';
+import 'package:vitas_uc/ignoreThisFolder/services/database.dart';
 import 'package:vitas_uc/vitasproject/screens/sign_in.dart';
 
 class CashoutBetScreen extends StatelessWidget {

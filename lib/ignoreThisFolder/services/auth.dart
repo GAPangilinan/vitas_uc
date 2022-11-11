@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:vitas_uc/models/user_model.dart';
-import 'package:vitas_uc/services/database.dart';
+import 'package:vitas_uc/ignoreThisFolder/models/user_model.dart';
+import 'package:vitas_uc/ignoreThisFolder/services/database.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;

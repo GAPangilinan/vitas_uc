@@ -1,13 +1,16 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:vitas_uc/models/vitasmodel.dart';
-import 'package:vitas_uc/screens/betscreen/cashin_betscreen/cashin_betscreen.dart';
-import 'package:vitas_uc/screens/betscreen/cashout_betscreen/cashout_betscreen.dart';
-import 'package:vitas_uc/services/auth.dart';
-import 'package:vitas_uc/services/database.dart';
+import 'package:vitas_uc/ignoreThisFolder/models/vitasmodel.dart';
+import 'package:vitas_uc/ignoreThisFolder/screens/betscreen/cashin_betscreen/cashin_betscreen.dart';
+import 'package:vitas_uc/ignoreThisFolder/screens/fight_betscreen/fight_betscreen.dart';
+import 'package:vitas_uc/ignoreThisFolder/screens/qrscanner_screen.dart';
+import 'package:vitas_uc/ignoreThisFolder/services/auth.dart';
+import 'package:vitas_uc/ignoreThisFolder/services/database.dart';
 
-class CashoutHomeScreenOld extends StatelessWidget {
-  //const CashoutHomeScreenOld({super.key});
+class FightHomeScreen extends StatelessWidget {
+  //const HomeScreen({super.key});
 
   final AuthService _auth = AuthService();
 
@@ -23,7 +26,6 @@ class CashoutHomeScreenOld extends StatelessWidget {
           child: SingleChildScrollView(
             child: Container(
               height: MediaQuery.of(context).size.height * 1,
-              width: MediaQuery.of(context).size.width * 1,
               padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
               decoration: BoxDecoration(
                 image: DecorationImage(
@@ -115,7 +117,18 @@ class CashoutHomeScreenOld extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          'CASH OUT',
+                          'FIGHT NO: 1',
+                          style: TextStyle(
+                            fontSize: 19,
+                            color: Color.fromRGBO(102, 102, 102, 1),
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 3.0,
+                            fontFamily: 'Roboto',
+                          ),
+                        ),
+                        SizedBox(width: 150),
+                        Text(
+                          'OPEN',
                           style: TextStyle(
                             fontSize: 19,
                             color: Color.fromRGBO(54, 191, 54, 1),
@@ -143,12 +156,33 @@ class CashoutHomeScreenOld extends StatelessWidget {
                   ),
                   SizedBox(height: 10),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Important:',
+                        'MERON',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 3.0,
+                          fontFamily: 'Roboto',
+                        ),
+                      ),
+                      Text(
+                        'VS',
                         style: TextStyle(
                           fontSize: 10,
                           color: Color.fromRGBO(102, 102, 102, 1),
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 3.0,
+                          fontFamily: 'Roboto',
+                        ),
+                      ),
+                      Text(
+                        'WALA',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.blue,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 3.0,
                           fontFamily: 'Roboto',
@@ -158,13 +192,106 @@ class CashoutHomeScreenOld extends StatelessWidget {
                   ),
                   SizedBox(height: 10),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'By using this cash out facility, you agree that\nthe amount will be debited from your card with\nminimum fee of (50.00). \n\nUpon confirmation of the transaction, the\namoun debited from the card is non refundable\nand can not be reversed.',
-                        textAlign: TextAlign.justify,
+                        'Talisayin',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 3.0,
+                          fontFamily: 'Roboto',
+                        ),
+                      ),
+                      Text(
+                        'BREED',
                         style: TextStyle(
                           fontSize: 10,
                           color: Color.fromRGBO(102, 102, 102, 1),
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 3.0,
+                          fontFamily: 'Roboto',
+                        ),
+                      ),
+                      Text(
+                        'Roundhed',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 3.0,
+                          fontFamily: 'Roboto',
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Pedro Martinez',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 3.0,
+                          fontFamily: 'Roboto',
+                        ),
+                      ),
+                      SizedBox(width: 1),
+                      Text(
+                        'OWNER',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Color.fromRGBO(102, 102, 102, 1),
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 3.0,
+                          fontFamily: 'Roboto',
+                        ),
+                      ),
+                      Text(
+                        'Ronald Marasigan',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 3.0,
+                          fontFamily: 'Roboto',
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        '100,000,000.00',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 3.0,
+                          fontFamily: 'Roboto',
+                        ),
+                      ),
+                      Text(
+                        'BET',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Color.fromRGBO(102, 102, 102, 1),
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 3.0,
+                          fontFamily: 'Roboto',
+                        ),
+                      ),
+                      Text(
+                        '100,000,000.00',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.blue,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 3.0,
                           fontFamily: 'Roboto',
@@ -192,7 +319,7 @@ class CashoutHomeScreenOld extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => CashoutBetScreenOld()),
+                                  builder: (context) => FightBetScreen()),
                             );
                           },
                         ),

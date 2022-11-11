@@ -257,9 +257,10 @@ class _SignInState extends State<SignIn> {
                             });
                             signIn(
                                 emailController.text, passwordController.text);
+                            checkRememberMe();
                           },
                           child: Text(
-                            "Login",
+                            "LOGIN",
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.white,

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:vitas_uc/models/vitasmodel.dart';
-import 'package:vitas_uc/screens/home/cashin/cashin_homescreen.dart';
-import 'package:vitas_uc/screens/qrscanner_screen.dart';
-import 'package:vitas_uc/services/auth.dart';
-import 'package:vitas_uc/services/database.dart';
+import 'package:vitas_uc/ignoreThisFolder/models/vitasmodel.dart';
+import 'package:vitas_uc/ignoreThisFolder/screens/home/cashin/cashin_homescreen.dart';
+import 'package:vitas_uc/ignoreThisFolder/screens/home/cashout/cashout_homescreen.dart';
+import 'package:vitas_uc/ignoreThisFolder/services/auth.dart';
+import 'package:vitas_uc/ignoreThisFolder/services/database.dart';
 
-class CashinBetScreenOld extends StatelessWidget {
-  // const CashinBetScreenOld({super.key});
+class CashoutBetScreenOld extends StatelessWidget {
+  // const CashoutBetScreenOld({super.key});
 
   final AuthService _auth = AuthService();
   TextEditingController amountController = TextEditingController();
@@ -124,7 +124,7 @@ class CashinBetScreenOld extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          'CASH IN',
+                          'CASH OUT',
                           style: TextStyle(
                             fontSize: 19,
                             color: Color.fromRGBO(54, 191, 54, 1),
@@ -169,7 +169,7 @@ class CashinBetScreenOld extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'By using this cash in facility, you agree that \nthe amount will be credited to your card with a\nminimum fee of (0.00). \n\nUpon confirmation of the transaction, the \namount credited to the card is non refundable \nand can not be reversed.',
+                        'By using this cash out facility, you agree that\nthe amount will be debited from your card with\nminimum fee of (50.00). \n\nUpon confirmation of the transaction, the\namoun debited from the card is non refundable\nand can not be reversed.',
                         style: TextStyle(
                           fontSize: 10,
                           color: Color.fromRGBO(102, 102, 102, 1),
@@ -459,7 +459,7 @@ class CashinBetScreenOld extends StatelessWidget {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    CashinHomeScreenOld()));
+                                                    CashoutHomeScreenOld()));
                                       },
                                     ),
                                     TextButton(
@@ -580,7 +580,7 @@ class CashinBetScreenOld extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => CashinHomeScreenOld()),
+                                  builder: (context) => CashoutHomeScreenOld()),
                             );
                           },
                           child: Text(

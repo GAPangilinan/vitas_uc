@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vitas_uc/services/auth.dart';
-import 'package:vitas_uc/shared/constants.dart';
-import 'package:vitas_uc/shared/loading.dart';
+import 'package:vitas_uc/ignoreThisFolder/services/auth.dart';
+import 'package:vitas_uc/ignoreThisFolder/shared/constants.dart';
+import 'package:vitas_uc/ignoreThisFolder/shared/loading.dart';
 
 class RegisterOld extends StatefulWidget {
   //const RegisterOld({super.key});

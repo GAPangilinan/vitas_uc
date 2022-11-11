@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:vitas_uc/screens/authenticate/forgot_password.dart';
-import 'package:vitas_uc/screens/betscreen/cashin_betscreen/cashin_betscreen.dart';
-import 'package:vitas_uc/screens/betscreen/cashout_betscreen/cashout_betscreen.dart';
-import 'package:vitas_uc/screens/fight_betscreen/fight_betscreen.dart';
-import 'package:vitas_uc/screens/fight_homescreen/fight_homescreen.dart';
-import 'package:vitas_uc/screens/home/cashout/cashout_homescreen.dart';
-import 'package:vitas_uc/screens/home/cashin/cashin_homescreen.dart';
-import 'package:vitas_uc/screens/loading_screen.dart';
+import 'package:vitas_uc/ignoreThisFolder/screens/authenticate/forgot_password.dart';
+import 'package:vitas_uc/ignoreThisFolder/screens/betscreen/cashin_betscreen/cashin_betscreen.dart';
+import 'package:vitas_uc/ignoreThisFolder/screens/betscreen/cashout_betscreen/cashout_betscreen.dart';
+import 'package:vitas_uc/ignoreThisFolder/screens/fight_betscreen/fight_betscreen.dart';
+import 'package:vitas_uc/ignoreThisFolder/screens/fight_homescreen/fight_homescreen.dart';
+import 'package:vitas_uc/ignoreThisFolder/screens/home/cashout/cashout_homescreen.dart';
+import 'package:vitas_uc/ignoreThisFolder/screens/home/cashin/cashin_homescreen.dart';
+import 'package:vitas_uc/ignoreThisFolder/screens/loading_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:vitas_uc/screens/loading_screen.dart';
-import 'package:vitas_uc/unusedModules/authenticate/register.dart';
+import 'package:vitas_uc/ignoreThisFolder/screens/loading_screen.dart';
+import 'package:vitas_uc/ignoreThisFolder/unusedModules/authenticate/register.dart';
 import 'package:vitas_uc/vitasproject/screens/loading_screen.dart';
 import 'package:vitas_uc/vitasproject/screens/register.dart';
 

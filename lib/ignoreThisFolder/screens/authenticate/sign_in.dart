@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:vitas_uc/screens/authenticate/forgot_password.dart';
-import 'package:vitas_uc/services/auth.dart';
-import 'package:vitas_uc/shared/constants.dart';
-import 'package:vitas_uc/shared/loading.dart';
+import 'package:vitas_uc/ignoreThisFolder/screens/authenticate/forgot_password.dart';
+import 'package:vitas_uc/ignoreThisFolder/services/auth.dart';
+import 'package:vitas_uc/ignoreThisFolder/shared/constants.dart';
+import 'package:vitas_uc/ignoreThisFolder/shared/loading.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
