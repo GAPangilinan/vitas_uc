@@ -4,6 +4,8 @@ import 'package:vitas_uc/models/vitasmodel.dart';
 import 'package:vitas_uc/unusedModules/home/vitas_tile.dart';
 
 class VitasList extends StatefulWidget {
+  const VitasList({super.key});
+
   //const VitasList({super.key});
 
   @override
