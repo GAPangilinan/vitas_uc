@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vitas_uc/ignoreThisFolder/models/vitasmodel.dart';
@@ -8,9 +9,11 @@ import 'package:vitas_uc/ignoreThisFolder/screens/fight_betscreen/fight_betscree
 import 'package:vitas_uc/ignoreThisFolder/screens/qrscanner_screen.dart';
 import 'package:vitas_uc/ignoreThisFolder/services/auth.dart';
 import 'package:vitas_uc/ignoreThisFolder/services/database.dart';
+import 'package:vitas_uc/vitasproject/screens/fight_betscreen.dart';
+import 'package:vitas_uc/vitasproject/screens/sign_in.dart';
 
-class FightHomeScreenOld extends StatelessWidget {
-  //const FightHomeScreenOld({super.key});
+class FightHomeScreen extends StatelessWidget {
+  //const HomeScreen({super.key});
 
   final AuthService _auth = AuthService();
 
@@ -64,8 +67,8 @@ class FightHomeScreenOld extends StatelessWidget {
                           icon: Icon(Icons.login_rounded),
                           iconSize: 30,
                           color: Colors.grey[700],
-                          onPressed: () async {
-                            await _auth.signOut();
+                          onPressed: () {
+                            logout(context);
                           },
                         ),
                       ],
@@ -319,7 +322,7 @@ class FightHomeScreenOld extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => FightBetScreenOld()),
+                                  builder: (context) => FightBetScreen()),
                             );
                           },
                         ),
@@ -347,6 +350,17 @@ class FightHomeScreenOld extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Future<void> logout(BuildContext context) async {
+    CircularProgressIndicator();
+    await FirebaseAuth.instance.signOut();
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => SignIn(),
       ),
     );
   }

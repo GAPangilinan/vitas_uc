@@ -29,10 +29,7 @@ class _RegisterState extends State<Register> {
   bool _isObscure = true;
   bool _isObscure2 = true;
   File? file;
-  var options = [
-    'Cash In',
-    'Cash Out',
-  ];
+  var options = ['Cash In', 'Cash Out', 'Bet'];
   var _currentItemSelected = "Cash In";
   var cashierstatus = "Cash In";
 

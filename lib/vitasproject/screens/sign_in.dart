@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:vitas_uc/vitasproject/screens/fight_homescreen.dart';
 import 'package:vitas_uc/vitasproject/screens/forgot_password.dart';
 import 'cashin_homescreen.dart';
 import 'cashout_homescreen.dart';
@@ -138,18 +139,18 @@ class _SignInState extends State<SignIn> {
                               borderRadius: new BorderRadius.circular(10),
                             ),
                           ),
-                          validator: (value) {
-                            if (value!.length == 0) {
-                              return "Email cannot be empty";
-                            }
-                            if (!RegExp(
-                                    "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
-                                .hasMatch(value)) {
-                              return ("Please enter a valid email");
-                            } else {
-                              return null;
-                            }
-                          },
+                          // validator: (value) {
+                          //   if (value!.length == 0) {
+                          //     return "Email cannot be empty";
+                          //   }
+                          //   if (!RegExp(
+                          //           "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                          //       .hasMatch(value)) {
+                          //     return ("Please enter a valid email");
+                          //   } else {
+                          //     return null;
+                          //   }
+                          // },
                           onSaved: (value) {
                             emailController.text = value!;
                           },
@@ -184,17 +185,17 @@ class _SignInState extends State<SignIn> {
                               borderRadius: new BorderRadius.circular(10),
                             ),
                           ),
-                          validator: (value) {
-                            RegExp regex = new RegExp(r'^.{6,}$');
-                            if (value!.isEmpty) {
-                              return "Password cannot be empty";
-                            }
-                            if (!regex.hasMatch(value)) {
-                              return ("please enter valid password min. 6 character");
-                            } else {
-                              return null;
-                            }
-                          },
+                          // validator: (value) {
+                          //   RegExp regex = new RegExp(r'^.{6,}$');
+                          //   if (value!.isEmpty) {
+                          //     return "Password cannot be empty";
+                          //   }
+                          //   if (!regex.hasMatch(value)) {
+                          //     return ("please enter valid password min. 6 character");
+                          //   } else {
+                          //     return null;
+                          //   }
+                          // },
                           onSaved: (value) {
                             passwordController.text = value!;
                           },
@@ -282,60 +283,60 @@ class _SignInState extends State<SignIn> {
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Visibility(
-                            maintainSize: true,
-                            maintainAnimation: true,
-                            maintainState: true,
-                            visible: visible,
-                            child: Container(
-                                child: CircularProgressIndicator(
-                              color: Colors.white,
-                            ))),
+                        // SizedBox(
+                        //   height: 10,
+                        // ),
+                        // Visibility(
+                        //     maintainSize: true,
+                        //     maintainAnimation: true,
+                        //     maintainState: true,
+                        //     visible: visible,
+                        //     child: Container(
+                        //         child: CircularProgressIndicator(
+                        //       color: Colors.white,
+                        //     ))),
                       ],
                     ),
                   ),
                 ),
               ),
             ),
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 20,
-                  ),
-                  MaterialButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(20.0),
-                      ),
-                    ),
-                    elevation: 5.0,
-                    height: 40,
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Register(),
-                        ),
-                      );
-                    },
-                    color: Colors.blue[900],
-                    child: Text(
-                      "Register Now",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            // Center(
+            //   child: Column(
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //     crossAxisAlignment: CrossAxisAlignment.center,
+            //     children: [
+            //       SizedBox(
+            //         height: 20,
+            //       ),
+            //       MaterialButton(
+            //         shape: RoundedRectangleBorder(
+            //           borderRadius: BorderRadius.all(
+            //             Radius.circular(20.0),
+            //           ),
+            //         ),
+            //         elevation: 5.0,
+            //         height: 40,
+            //         onPressed: () {
+            //           Navigator.pushReplacement(
+            //             context,
+            //             MaterialPageRoute(
+            //               builder: (context) => Register(),
+            //             ),
+            //           );
+            //         },
+            //         color: Colors.blue[900],
+            //         child: Text(
+            //           "Register Now",
+            //           style: TextStyle(
+            //             color: Colors.white,
+            //             fontSize: 20,
+            //           ),
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
           ],
         ),
       ),
@@ -357,11 +358,18 @@ class _SignInState extends State<SignIn> {
               builder: (context) => CashinHomeScreen(),
             ),
           );
-        } else {
+        } else if (documentSnapshot.get('cashierstatus') == "Cash Out") {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               builder: (context) => CashoutHomeScreen(),
+            ),
+          );
+        } else if (documentSnapshot.get('cashierstatus') == "Bet") {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => FightHomeScreen(),
             ),
           );
         }
@@ -382,9 +390,89 @@ class _SignInState extends State<SignIn> {
         route();
       } on FirebaseAuthException catch (e) {
         if (e.code == 'user-not-found') {
-          print('No user found for that email.');
-        } else if (e.code == 'wrong-password') {
-          print('Wrong password provided for that user.');
+          //print('No user found for that email.');
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                ),
+                icon: Icon(Icons.lock_open),
+                title: Text('Invalid Credentials'),
+                content:
+                    Text('The username or password you entered is incorrect'),
+                actions: [
+                  TextButton(
+                    child: Text('Ok'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      emailController.clear();
+                      passwordController.clear();
+                      isChecked = false;
+                    },
+                  ),
+                ],
+              );
+            },
+          );
+          //   else if (e.code == 'wrong-password') {
+          //   print('Wrong password provided for that user.');
+          // }
+        } else if (e.message.toString() ==
+            'The email address is badly formatted.') {
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                ),
+                icon: Icon(Icons.lock_open),
+                title: Text('Forgot Password'),
+                content: Text(
+                    'The email address or domain you entered is not valid. Valid entries include: someone@example.com'),
+                actions: [
+                  TextButton(
+                    child: Text('Ok'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      emailController.clear();
+                      passwordController.clear();
+                      isChecked = false;
+                    },
+                  ),
+                ],
+              );
+            },
+          );
+        } else if (emailController.text.isEmpty ||
+            passwordController.text.isEmpty) {
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                ),
+                icon: Icon(Icons.lock_open),
+                title: Text('Invalid Credentials'),
+                content: Text(
+                    'Please enter your username/password before you login.'),
+                actions: [
+                  TextButton(
+                    child: Text('Ok'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      emailController.clear();
+                      passwordController.clear();
+                      isChecked = false;
+                    },
+                  ),
+                ],
+              );
+            },
+          );
         }
       }
     }
