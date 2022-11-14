@@ -71,7 +71,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     // Navigator.of(context).pushReplacement(MaterialPageRoute(
                     //     builder: (BuildContext context) =>
                     //         SignIn()));
-                    Get.replace(SignIn());
+                    Get.to(SignIn());
                   },
                 ),
               ],

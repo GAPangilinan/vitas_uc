@@ -21,7 +21,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(Duration(seconds: 3), () => Get.replace(Register())
+    Timer(Duration(seconds: 3), () => Get.to(Register())
         // Navigator.of(context).pushReplacement(
         //     MaterialPageRoute(builder: (BuildContext context) => Register()))
         );

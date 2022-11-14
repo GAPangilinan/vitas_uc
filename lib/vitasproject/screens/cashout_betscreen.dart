@@ -632,6 +632,6 @@ class CashoutBetScreen extends StatelessWidget {
     //     builder: (context) => SignIn(),
     //   ),
     // );
-    Get.replace(SignIn());
+    Get.to(SignIn());
   }
 }

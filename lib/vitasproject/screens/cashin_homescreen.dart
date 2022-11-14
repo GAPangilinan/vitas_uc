@@ -241,6 +241,6 @@ class CashinHomeScreen extends StatelessWidget {
     //   ),
     // );
 
-    Get.replace(SignIn());
+    Get.to(SignIn());
   }
 }

@@ -119,6 +119,6 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
     //   ),
     // );
 
-    Get.replace(SignIn());
+    Get.to(SignIn());
   }
 }

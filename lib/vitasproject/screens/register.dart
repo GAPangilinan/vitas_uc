@@ -329,6 +329,6 @@ class _RegisterState extends State<Register> {
     // Navigator.pushReplacement(
     //     context, MaterialPageRoute(builder: (context) => SignIn()));
 
-    Get.replace(SignIn());
+    Get.to(SignIn());
   }
 }

@@ -361,7 +361,7 @@ class _SignInState extends State<SignIn> {
           //     builder: (context) => CashinHomeScreen(),
           //   ),
           // );
-          Get.replace(CashinHomeScreen());
+          Get.to(CashinHomeScreen());
         } else if (documentSnapshot.get('cashierstatus') == "Cash Out") {
           // Navigator.pushReplacement(
           //   context,
@@ -369,7 +369,7 @@ class _SignInState extends State<SignIn> {
           //     builder: (context) => CashoutHomeScreen(),
           //   ),
           // );
-          Get.replace(CashoutHomeScreen());
+          Get.to(CashoutHomeScreen());
         } else if (documentSnapshot.get('cashierstatus') == "Bet") {
           // Navigator.pushReplacement(
           //   context,
@@ -377,7 +377,7 @@ class _SignInState extends State<SignIn> {
           //     builder: (context) => FightHomeScreen(),
           //   ),
           // );
-          Get.replace(FightHomeScreen());
+          Get.to(FightHomeScreen());
         }
       } else {
         print('Document does not exist on the database');

@@ -239,6 +239,6 @@ class CashoutHomeScreen extends StatelessWidget {
     //   ),
     // );
 
-    Get.replace(SignIn());
+    Get.to(SignIn());
   }
 }
