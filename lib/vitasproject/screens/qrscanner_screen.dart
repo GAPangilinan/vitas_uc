@@ -1,14 +1,19 @@
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:vitas_uc/vitasproject/screens/cashin_betscreen.dart';
+import 'package:vitas_uc/vitasproject/screens/sign_in.dart';
 
-class QRScannerScreenOld extends StatefulWidget {
-  const QRScannerScreenOld({super.key});
+class QRScannerScreen extends StatefulWidget {
+  const QRScannerScreen({super.key});
 
   @override
-  State<QRScannerScreenOld> createState() => _QRScannerScreenOldState();
+  State<QRScannerScreen> createState() => _QRScannerScreenState();
 }
 
-class _QRScannerScreenOldState extends State<QRScannerScreenOld> {
+class _QRScannerScreenState extends State<QRScannerScreen> {
   final GlobalKey _globalKey = GlobalKey();
   QRViewController? controller;
   Barcode? result;
@@ -29,9 +34,34 @@ class _QRScannerScreenOldState extends State<QRScannerScreenOld> {
       backgroundColor: Color.fromRGBO(62, 58, 57, 1),
       appBar: AppBar(
         title: Text(
-          'QR Scanner Demo',
+          'QRScanner',
         ),
         backgroundColor: Colors.blue,
+        actions: <Widget>[
+          TextButton.icon(
+            icon: Icon(Icons.attach_money, color: Colors.white),
+            label: Text('Bet Screen'),
+            style: TextButton.styleFrom(
+              primary: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CashinBetScreen()),
+              );
+            },
+          ),
+          TextButton.icon(
+            icon: Icon(Icons.logout, color: Colors.white),
+            label: Text('Logout'),
+            style: TextButton.styleFrom(
+              primary: Colors.white,
+            ),
+            onPressed: () {
+              logout(context);
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -72,6 +102,17 @@ class _QRScannerScreenOldState extends State<QRScannerScreenOld> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Future<void> logout(BuildContext context) async {
+    CircularProgressIndicator();
+    await FirebaseAuth.instance.signOut();
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => SignIn(),
       ),
     );
   }

@@ -52,8 +52,10 @@ class Home extends StatelessWidget {
               icon: Icon(Icons.qr_code_scanner),
               label: Text('qr scanner'),
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => QRScannerScreen()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => QRScannerScreenOld()));
                 Navigator.pop(context);
               },
             ),

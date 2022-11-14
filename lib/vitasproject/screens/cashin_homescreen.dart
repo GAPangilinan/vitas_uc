@@ -6,7 +6,9 @@ import 'package:vitas_uc/ignoreThisFolder/screens/betscreen/cashin_betscreen/cas
 import 'package:vitas_uc/ignoreThisFolder/screens/qrscanner_screen.dart';
 import 'package:vitas_uc/ignoreThisFolder/services/auth.dart';
 import 'package:vitas_uc/ignoreThisFolder/services/database.dart';
+import 'package:vitas_uc/ignoreThisFolder/unusedModules/qrcreate_screen.dart';
 import 'package:vitas_uc/vitasproject/screens/cashin_betscreen.dart';
+import 'package:vitas_uc/vitasproject/screens/qrscanner_screen.dart';
 import 'package:vitas_uc/vitasproject/screens/sign_in.dart';
 
 class CashinHomeScreen extends StatelessWidget {
@@ -194,7 +196,7 @@ class CashinHomeScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => CashinBetScreen()),
+                                  builder: (context) => QRScannerScreen()),
                             );
                           },
                         ),

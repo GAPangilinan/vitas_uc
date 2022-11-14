@@ -11,6 +11,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:vitas_uc/ignoreThisFolder/screens/loading_screen.dart';
 import 'package:vitas_uc/ignoreThisFolder/unusedModules/authenticate/register.dart';
+import 'package:vitas_uc/ignoreThisFolder/unusedModules/home/home.dart';
 import 'package:vitas_uc/vitasproject/screens/loading_screen.dart';
 import 'package:vitas_uc/vitasproject/screens/register.dart';
 
@@ -41,6 +42,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primaryColor: Colors.blue[900],
       ),
+      //home: Home(),
       home: LoadingScreen(),
       //home: Register(),
     );
