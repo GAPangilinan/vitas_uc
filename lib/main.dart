@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vitas_uc/ignoreThisFolder/screens/authenticate/forgot_password.dart';
 import 'package:vitas_uc/ignoreThisFolder/screens/betscreen/cashin_betscreen/cashin_betscreen.dart';
 import 'package:vitas_uc/ignoreThisFolder/screens/betscreen/cashout_betscreen/cashout_betscreen.dart';
@@ -37,7 +38,17 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    // return MaterialApp(
+    //   debugShowCheckedModeBanner: false,
+    //   theme: ThemeData(
+    //     primaryColor: Colors.blue[900],
+    //   ),
+    //   //home: Home(),
+    //   home: LoadingScreen(),
+    //   //home: Register(),
+    // );
+
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.blue[900],

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:vitas_uc/ignoreThisFolder/screens/authenticate/sign_in.dart';
 import 'package:vitas_uc/ignoreThisFolder/screens/loading_screen.dart';
@@ -20,10 +21,10 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(
-        Duration(seconds: 3),
-        () => Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (BuildContext context) => Register())));
+    Timer(Duration(seconds: 3), () => Get.replace(Register())
+        // Navigator.of(context).pushReplacement(
+        //     MaterialPageRoute(builder: (BuildContext context) => Register()))
+        );
   }
 
   @override

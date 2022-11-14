@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:vitas_uc/vitasproject/screens/cashin_betscreen.dart';
 import 'package:vitas_uc/vitasproject/screens/sign_in.dart';
@@ -45,10 +46,11 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
               primary: Colors.white,
             ),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => CashinBetScreen()),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => CashinBetScreen()),
+              // );
+              Get.to(CashinBetScreen());
             },
           ),
           TextButton.icon(
@@ -68,6 +70,7 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              SizedBox(height: 70),
               Container(
                 height: 400,
                 width: 400,
@@ -109,11 +112,13 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
   Future<void> logout(BuildContext context) async {
     CircularProgressIndicator();
     await FirebaseAuth.instance.signOut();
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => SignIn(),
-      ),
-    );
+    // Navigator.pushReplacement(
+    //   context,
+    //   MaterialPageRoute(
+    //     builder: (context) => SignIn(),
+    //   ),
+    // );
+
+    Get.replace(SignIn());
   }
 }

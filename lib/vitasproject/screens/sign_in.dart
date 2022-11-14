@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
 import 'package:vitas_uc/vitasproject/screens/fight_homescreen.dart';
 import 'package:vitas_uc/vitasproject/screens/forgot_password.dart';
 import 'cashin_homescreen.dart';
@@ -234,10 +235,12 @@ class _SignInState extends State<SignIn> {
                                     decorationThickness: 1.8,
                                   ),
                                 ),
-                                onPressed: () => Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            ForgotPasswordPage())),
+                                onPressed: () {
+                                  // Navigator.of(context).push(MaterialPageRoute(
+                                  //     builder: (context) =>
+                                  //         ForgotPasswordPage()));
+                                  Get.to(ForgotPasswordPage());
+                                },
                               ),
                             ),
                           ],
@@ -352,26 +355,29 @@ class _SignInState extends State<SignIn> {
         .then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {
         if (documentSnapshot.get('cashierstatus') == "Cash In") {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => CashinHomeScreen(),
-            ),
-          );
+          // Navigator.pushReplacement(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (context) => CashinHomeScreen(),
+          //   ),
+          // );
+          Get.replace(CashinHomeScreen());
         } else if (documentSnapshot.get('cashierstatus') == "Cash Out") {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => CashoutHomeScreen(),
-            ),
-          );
+          // Navigator.pushReplacement(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (context) => CashoutHomeScreen(),
+          //   ),
+          // );
+          Get.replace(CashoutHomeScreen());
         } else if (documentSnapshot.get('cashierstatus') == "Bet") {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => FightHomeScreen(),
-            ),
-          );
+          // Navigator.pushReplacement(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (context) => FightHomeScreen(),
+          //   ),
+          // );
+          Get.replace(FightHomeScreen());
         }
       } else {
         print('Document does not exist on the database');
@@ -406,7 +412,12 @@ class _SignInState extends State<SignIn> {
                   TextButton(
                     child: Text('Ok'),
                     onPressed: () {
-                      Navigator.pop(context);
+                      // Navigator.pop(context);
+                      // emailController.clear();
+                      // passwordController.clear();
+                      // isChecked = false;
+
+                      Get.back();
                       emailController.clear();
                       passwordController.clear();
                       isChecked = false;
@@ -436,7 +447,12 @@ class _SignInState extends State<SignIn> {
                   TextButton(
                     child: Text('Ok'),
                     onPressed: () {
-                      Navigator.pop(context);
+                      // Navigator.pop(context);
+                      // emailController.clear();
+                      // passwordController.clear();
+                      // isChecked = false;
+
+                      Get.back();
                       emailController.clear();
                       passwordController.clear();
                       isChecked = false;
@@ -463,7 +479,12 @@ class _SignInState extends State<SignIn> {
                   TextButton(
                     child: Text('Ok'),
                     onPressed: () {
-                      Navigator.pop(context);
+                      // Navigator.pop(context);
+                      // emailController.clear();
+                      // passwordController.clear();
+                      // isChecked = false;
+
+                      Get.back();
                       emailController.clear();
                       passwordController.clear();
                       isChecked = false;

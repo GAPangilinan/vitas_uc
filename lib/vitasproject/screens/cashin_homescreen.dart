@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:vitas_uc/ignoreThisFolder/models/vitasmodel.dart';
 import 'package:vitas_uc/ignoreThisFolder/screens/betscreen/cashin_betscreen/cashin_betscreen.dart';
@@ -193,11 +194,13 @@ class CashinHomeScreen extends StatelessWidget {
                             ),
                           ),
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => QRScannerScreen()),
-                            );
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //       builder: (context) => QRScannerScreen()),
+                            // );
+
+                            Get.to(QRScannerScreen());
                           },
                         ),
                       ),
@@ -231,11 +234,13 @@ class CashinHomeScreen extends StatelessWidget {
   Future<void> logout(BuildContext context) async {
     CircularProgressIndicator();
     await FirebaseAuth.instance.signOut();
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => SignIn(),
-      ),
-    );
+    // Navigator.pushReplacement(
+    //   context,
+    //   MaterialPageRoute(
+    //     builder: (context) => SignIn(),
+    //   ),
+    // );
+
+    Get.replace(SignIn());
   }
 }

@@ -49,6 +49,10 @@ dependencies:
   qr_flutter: ^4.0.0
   flutter_zxing: ^0.8.4
   camera: ^0.10.0+4
+  get: ^4.6.5
+  hexcolor: ^3.0.1
+  get_storage: ^2.0.3
+
 
 dev_dependencies:
   flutter_test:

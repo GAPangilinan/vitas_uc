@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:vitas_uc/ignoreThisFolder/models/vitasmodel.dart';
 import 'package:vitas_uc/ignoreThisFolder/screens/fight_homescreen/fight_homescreen.dart';
@@ -7,6 +8,7 @@ import 'package:vitas_uc/ignoreThisFolder/screens/home/cashin/cashin_homescreen.
 import 'package:vitas_uc/ignoreThisFolder/screens/qrscanner_screen.dart';
 import 'package:vitas_uc/ignoreThisFolder/services/auth.dart';
 import 'package:vitas_uc/ignoreThisFolder/services/database.dart';
+import 'package:vitas_uc/vitasproject/screens/fight_homescreen.dart';
 import 'package:vitas_uc/vitasproject/screens/sign_in.dart';
 
 class FightBetScreen extends StatelessWidget {
@@ -585,17 +587,22 @@ class FightBetScreen extends StatelessWidget {
                                     TextButton(
                                       child: Text('Yes'),
                                       onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    FightHomeScreenOld()));
+                                        // Navigator.push(
+                                        //     context,
+                                        //     MaterialPageRoute(
+                                        //         builder: (context) =>
+                                        //             FightHomeScreenOld()));
+                                        Get.to(FightHomeScreen());
                                       },
                                     ),
                                     TextButton(
                                       child: Text('No'),
                                       onPressed: () {
-                                        Navigator.pop(context);
+                                        // Navigator.pop(context);
+                                        // amountController.clear();
+                                        // FinalResultAmount = 0;
+
+                                        Get.back();
                                         amountController.clear();
                                         FinalResultAmount = 0;
                                       },
@@ -623,7 +630,10 @@ class FightBetScreen extends StatelessWidget {
                                     TextButton(
                                       child: Text('Ok'),
                                       onPressed: () {
-                                        Navigator.pop(context);
+                                        // Navigator.pop(context);
+                                        // amountController.clear();
+                                        // FinalResultAmount = 0;
+                                        Get.back();
                                         amountController.clear();
                                         FinalResultAmount = 0;
                                       },
@@ -649,7 +659,11 @@ class FightBetScreen extends StatelessWidget {
                                   TextButton(
                                     child: Text('Ok'),
                                     onPressed: () {
-                                      Navigator.pop(context);
+                                      // Navigator.pop(context);
+                                      // amountController.clear();
+                                      // FinalResultAmount = 0;
+
+                                      Get.back();
                                       amountController.clear();
                                       FinalResultAmount = 0;
                                     },
@@ -707,11 +721,12 @@ class FightBetScreen extends StatelessWidget {
                           elevation: 100,
                           height: 53,
                           onPressed: () async {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => FightBetScreen()),
-                            );
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //       builder: (context) => FightBetScreen()),
+                            // );
+                            Get.to(FightBetScreen());
                           },
                           child: Text(
                             'CANCEL',
@@ -738,11 +753,12 @@ class FightBetScreen extends StatelessWidget {
   Future<void> logout(BuildContext context) async {
     CircularProgressIndicator();
     await FirebaseAuth.instance.signOut();
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => SignIn(),
-      ),
-    );
+    // Navigator.pushReplacement(
+    //   context,
+    //   MaterialPageRoute(
+    //     builder: (context) => SignIn(),
+    //   ),
+    // );
+    Get.replace(SignIn());
   }
 }

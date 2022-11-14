@@ -1,11 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:vitas_uc/ignoreThisFolder/models/vitasmodel.dart';
 import 'package:vitas_uc/ignoreThisFolder/screens/home/cashin/cashin_homescreen.dart';
 import 'package:vitas_uc/ignoreThisFolder/screens/home/cashout/cashout_homescreen.dart';
 import 'package:vitas_uc/ignoreThisFolder/services/auth.dart';
 import 'package:vitas_uc/ignoreThisFolder/services/database.dart';
+import 'package:vitas_uc/vitasproject/screens/cashout_homescreen.dart';
 import 'package:vitas_uc/vitasproject/screens/sign_in.dart';
 
 class CashoutBetScreen extends StatelessWidget {
@@ -457,17 +459,22 @@ class CashoutBetScreen extends StatelessWidget {
                                     TextButton(
                                       child: Text('Yes'),
                                       onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    CashoutHomeScreenOld()));
+                                        // Navigator.push(
+                                        //     context,
+                                        //     MaterialPageRoute(
+                                        //         builder: (context) =>
+                                        //             CashoutHomeScreen()));
+                                        Get.to(CashoutHomeScreen());
                                       },
                                     ),
                                     TextButton(
                                       child: Text('No'),
                                       onPressed: () {
-                                        Navigator.pop(context);
+                                        // Navigator.pop(context);
+                                        // amountController.clear();
+                                        // FinalResultAmount = 0;
+
+                                        Get.back();
                                         amountController.clear();
                                         FinalResultAmount = 0;
                                       },
@@ -495,7 +502,11 @@ class CashoutBetScreen extends StatelessWidget {
                                     TextButton(
                                       child: Text('Ok'),
                                       onPressed: () {
-                                        Navigator.pop(context);
+                                        // Navigator.pop(context);
+                                        // amountController.clear();
+                                        // FinalResultAmount = 0;
+
+                                        Get.back();
                                         amountController.clear();
                                         FinalResultAmount = 0;
                                       },
@@ -521,7 +532,10 @@ class CashoutBetScreen extends StatelessWidget {
                                   TextButton(
                                     child: Text('Ok'),
                                     onPressed: () {
-                                      Navigator.pop(context);
+                                      // Navigator.pop(context);
+                                      // amountController.clear();
+                                      // FinalResultAmount = 0;
+                                      Get.back();
                                       amountController.clear();
                                       FinalResultAmount = 0;
                                     },
@@ -579,11 +593,13 @@ class CashoutBetScreen extends StatelessWidget {
                           elevation: 100,
                           height: 53,
                           onPressed: () async {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => CashoutHomeScreenOld()),
-                            );
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //       builder: (context) => CashoutHomeScreen()),
+                            // );
+
+                            Get.to(CashoutHomeScreen());
                           },
                           child: Text(
                             'CANCEL',
@@ -610,11 +626,12 @@ class CashoutBetScreen extends StatelessWidget {
   Future<void> logout(BuildContext context) async {
     CircularProgressIndicator();
     await FirebaseAuth.instance.signOut();
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => SignIn(),
-      ),
-    );
+    // Navigator.pushReplacement(
+    //   context,
+    //   MaterialPageRoute(
+    //     builder: (context) => SignIn(),
+    //   ),
+    // );
+    Get.replace(SignIn());
   }
 }

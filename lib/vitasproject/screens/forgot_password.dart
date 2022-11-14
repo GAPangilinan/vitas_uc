@@ -3,8 +3,10 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:vitas_uc/ignoreThisFolder/services/loading_auth.dart';
+import 'package:vitas_uc/vitasproject/screens/sign_in.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
@@ -66,9 +68,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 TextButton(
                   child: Text('Ok'),
                   onPressed: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            AuthLoadingService()));
+                    // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    //     builder: (BuildContext context) =>
+                    //         SignIn()));
+                    Get.replace(SignIn());
                   },
                 ),
               ],
@@ -92,7 +95,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 TextButton(
                   child: Text('Ok'),
                   onPressed: () {
-                    Navigator.pop(context);
+                    // Navigator.pop(context);
+                    // emailcontroller.clear();
+
+                    Get.back();
                     emailcontroller.clear();
                   },
                 ),
@@ -117,7 +123,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 TextButton(
                   child: Text('Ok'),
                   onPressed: () {
-                    Navigator.pop(context);
+                    // Navigator.pop(context);
+                    // emailcontroller.clear();
+
+                    Get.back();
                     emailcontroller.clear();
                   },
                 ),
@@ -142,7 +151,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 TextButton(
                   child: Text('Ok'),
                   onPressed: () {
-                    Navigator.pop(context);
+                    // Navigator.pop(context);
+                    // emailcontroller.clear();
+
+                    Get.back();
                     emailcontroller.clear();
                   },
                 ),

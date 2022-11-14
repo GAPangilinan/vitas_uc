@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vitas_uc/vitasproject/screens/sign_in.dart';
 
 // import 'model.dart';
@@ -246,12 +247,13 @@ class _RegisterState extends State<Register> {
                               height: 40,
                               onPressed: () {
                                 CircularProgressIndicator();
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => SignIn(),
-                                  ),
-                                );
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //     builder: (context) => SignIn(),
+                                //   ),
+                                // );
+                                Get.to(SignIn());
                               },
                               child: Text(
                                 "Login",
@@ -324,7 +326,9 @@ class _RegisterState extends State<Register> {
     ref
         .doc(user!.uid)
         .set({'email': emailController.text, 'cashierstatus': cashierstatus});
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => SignIn()));
+    // Navigator.pushReplacement(
+    //     context, MaterialPageRoute(builder: (context) => SignIn()));
+
+    Get.replace(SignIn());
   }
 }
