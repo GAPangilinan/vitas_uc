@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:vitas_uc/vitasproject/screens/fight_homescreen.dart';
 import 'package:vitas_uc/vitasproject/screens/forgot_password.dart';
-import 'package:vitas_uc/vitasproject/widgets/rememberme_textbutton.dart';
 import 'cashin_homescreen.dart';
 import 'cashout_homescreen.dart';
 import 'register.dart';
@@ -205,19 +204,23 @@ class _SignInState extends State<SignIn> {
                         ),
                         Row(
                           children: [
-                            RememberMeCheckBox(),
+                            Checkbox(
+                              value: isChecked,
+                              activeColor: Colors.blue,
+                              tristate: false,
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  isChecked = value!;
+                                });
+                              },
+                            ),
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                              child: TextButton(
-                                child: Text(
-                                  'Remember Me',
-                                  style: TextStyle(
-                                    color: Color.fromRGBO(102, 102, 102, 1),
-                                  ),
+                              padding: const EdgeInsets.fromLTRB(0, 0, 30, 0),
+                              child: Text(
+                                'Remember Me',
+                                style: TextStyle(
+                                  color: Color.fromRGBO(102, 102, 102, 1),
                                 ),
-                                onPressed: () {
-                                  // RememberMeCheckBox()
-                                },
                               ),
                             ),
                             //SizedBox(width: 60),
@@ -283,60 +286,12 @@ class _SignInState extends State<SignIn> {
                             ),
                           ),
                         ),
-                        // SizedBox(
-                        //   height: 10,
-                        // ),
-                        // Visibility(
-                        //     maintainSize: true,
-                        //     maintainAnimation: true,
-                        //     maintainState: true,
-                        //     visible: visible,
-                        //     child: Container(
-                        //         child: CircularProgressIndicator(
-                        //       color: Colors.white,
-                        //     ))),
                       ],
                     ),
                   ),
                 ),
               ),
             ),
-            // Center(
-            //   child: Column(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     crossAxisAlignment: CrossAxisAlignment.center,
-            //     children: [
-            //       SizedBox(
-            //         height: 20,
-            //       ),
-            //       MaterialButton(
-            //         shape: RoundedRectangleBorder(
-            //           borderRadius: BorderRadius.all(
-            //             Radius.circular(20.0),
-            //           ),
-            //         ),
-            //         elevation: 5.0,
-            //         height: 40,
-            //         onPressed: () {
-            //           Navigator.pushReplacement(
-            //             context,
-            //             MaterialPageRoute(
-            //               builder: (context) => Register(),
-            //             ),
-            //           );
-            //         },
-            //         color: Colors.blue[900],
-            //         child: Text(
-            //           "Register Now",
-            //           style: TextStyle(
-            //             color: Colors.white,
-            //             fontSize: 20,
-            //           ),
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
           ],
         ),
       ),
