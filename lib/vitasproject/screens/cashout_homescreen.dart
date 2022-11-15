@@ -8,6 +8,7 @@ import 'package:vitas_uc/ignoreThisFolder/screens/betscreen/cashout_betscreen/ca
 import 'package:vitas_uc/ignoreThisFolder/services/auth.dart';
 import 'package:vitas_uc/ignoreThisFolder/services/database.dart';
 import 'package:vitas_uc/vitasproject/screens/cashout_betscreen.dart';
+import 'package:vitas_uc/vitasproject/screens/qrscanner_screen.dart';
 import 'package:vitas_uc/vitasproject/screens/sign_in.dart';
 
 class CashoutHomeScreen extends StatelessWidget {
@@ -198,7 +199,7 @@ class CashoutHomeScreen extends StatelessWidget {
                             //   MaterialPageRoute(
                             //       builder: (context) => CashoutBetScreen()),
                             // );
-                            Get.to(CashoutBetScreen());
+                            Get.to(QRScannerScreen());
                           },
                         ),
                       ),

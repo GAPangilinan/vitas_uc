@@ -11,6 +11,7 @@ import 'package:vitas_uc/ignoreThisFolder/screens/qrscanner_screen.dart';
 import 'package:vitas_uc/ignoreThisFolder/services/auth.dart';
 import 'package:vitas_uc/ignoreThisFolder/services/database.dart';
 import 'package:vitas_uc/vitasproject/screens/fight_betscreen.dart';
+import 'package:vitas_uc/vitasproject/screens/qrscanner_screen.dart';
 import 'package:vitas_uc/vitasproject/screens/sign_in.dart';
 
 class FightHomeScreen extends StatelessWidget {
@@ -326,7 +327,7 @@ class FightHomeScreen extends StatelessWidget {
                             //       builder: (context) => FightBetScreen()),
                             // );
 
-                            Get.to(FightBetScreen());
+                            Get.to(QRScannerScreen());
                           },
                         ),
                       ),

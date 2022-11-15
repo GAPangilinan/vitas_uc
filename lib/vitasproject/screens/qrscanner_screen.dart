@@ -1,10 +1,17 @@
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_zxing/flutter_zxing.dart';
 import 'package:get/get.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:vitas_uc/vitasproject/screens/cashin_betscreen.dart';
+import 'package:vitas_uc/vitasproject/screens/cashin_homescreen.dart';
+import 'package:vitas_uc/vitasproject/screens/cashout_betscreen.dart';
+import 'package:vitas_uc/vitasproject/screens/cashout_homescreen.dart';
+import 'package:vitas_uc/vitasproject/screens/fight_betscreen.dart';
+import 'package:vitas_uc/vitasproject/screens/fight_homescreen.dart';
 import 'package:vitas_uc/vitasproject/screens/sign_in.dart';
 
 class QRScannerScreen extends StatefulWidget {
@@ -29,6 +36,12 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
   }
 
   @override
+  void dispose() {
+    stopCameraProcessing();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -46,11 +59,7 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
               primary: Colors.white,
             ),
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => CashinBetScreen()),
-              // );
-              Get.to(CashinBetScreen());
+              route();
             },
           ),
           TextButton.icon(
@@ -120,5 +129,26 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
     // );
 
     Get.to(SignIn());
+  }
+
+  void route() {
+    User? user = FirebaseAuth.instance.currentUser;
+    var kk = FirebaseFirestore.instance
+        .collection('vitas')
+        .doc(user!.uid)
+        .get()
+        .then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        if (documentSnapshot.get('cashierstatus') == "Cash In") {
+          Get.to(CashinBetScreen());
+        } else if (documentSnapshot.get('cashierstatus') == "Cash Out") {
+          Get.to(CashoutBetScreen());
+        } else if (documentSnapshot.get('cashierstatus') == "Bet") {
+          Get.to(FightBetScreen());
+        }
+      } else {
+        print('Document does not exist on the database');
+      }
+    });
   }
 }

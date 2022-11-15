@@ -407,8 +407,8 @@ class CashinBetScreen extends StatelessWidget {
                           elevation: 100,
                           height: 53,
                           onPressed: () async {
-                            amount = 10000;
-                            amountController.text = amount.toString();
+                            // amount = 10000;
+                            amountController.text = BalBefore.toString();
                           },
                           child: Text(
                             'Max',
@@ -438,7 +438,9 @@ class CashinBetScreen extends StatelessWidget {
                         // int finaleResultAmount = int.parse(resultAmount
                         //     .toString()
                         //     .replaceAll(RegExp('[^0-9]'), ''));
+
                         if (amountController.text.isNotEmpty) {
+                          FinalResultAmount = int.parse(amountController.text);
                           if (FinalResultAmount <= BalBefore) {
                             showDialog(
                               context: context,
