@@ -52,6 +52,12 @@ dependencies:
   get: ^4.6.5
   hexcolor: ^3.0.1
   get_storage: ^2.0.3
+  http: ^0.13.5
+  intl: ^0.17.0
+  provider: ^6.0.5
+  
+  # bluetooth_print: ^4.3.0
+  # flutter_nfc_reader: ^0.1.0
 
 
 dev_dependencies:
