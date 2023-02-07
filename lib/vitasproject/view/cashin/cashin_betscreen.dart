@@ -22,6 +22,7 @@ class CashinBetScreen extends StatelessWidget {
   String? passwordc3;
   String? fullName;
   String? resultcode;
+  String? cardnumber;
   int? balance;
   int? totalBalance;
   CashinBetScreen(
@@ -47,6 +48,7 @@ class CashinBetScreen extends StatelessWidget {
 
       for (var p in jsonData) {
         Paycard paycard = Paycard(p["cardnumber"], p["balance"].toString());
+        String cardnumber = p["cardnumber"];
         balance = p["balance"];
         paycards.add(paycard);
       }
@@ -139,13 +141,18 @@ class CashinBetScreen extends StatelessWidget {
                           var balMinFin = totalBalance! - FinalResultAmount!;
                           totalBalance = balMinFin;
                         }
+
+                        // for (int i = 0; i < cardnumber!.length - 4; i++) {
+                        //   print(i);
+                        // }
                         return ListView.builder(
                             scrollDirection: Axis.vertical,
                             shrinkWrap: true,
                             itemCount: snapshot.data.length,
                             itemBuilder: (context, i) {
                               return ListTile(
-                                title: Text(snapshot.data[i].cardnumber,
+                                title: Text(
+                                    '####-####-####-${snapshot.data[i].cardnumber}',
                                     style: TextStyle(
                                         fontSize: 15,
                                         color:

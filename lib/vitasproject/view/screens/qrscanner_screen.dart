@@ -60,7 +60,7 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
   String? resultcode;
 
   QRViewController? controller;
-  final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
+  final GlobalKey qrKey = GlobalKey(/*debugLabel: 'QR'*/);
 
   void _onQRViewCreated(QRViewController controller) {
     setState(() => this.controller = controller);
@@ -259,26 +259,20 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
     }
   }
 
-  Future readQr() async {
-    if (result != null) {
-      controller!.pauseCamera();
-      setState(() {
-        print(result!.code);
-        controller!.dispose();
-      });
-      // setState(() {
-      //   if (result!.code == '7019-4889-5501-4231') {
-      //     Get.to(CashinBetScreen());
-      //   }
-      //   // Get.to(CashinBetScreen());
+  // Future readQr() async {
+  //   if (result != null) {
+  //     controller!.pauseCamera();
+  //     setState(() {
+  //       print(result!.code);
+  //       controller!.dispose();
+  //     });
 
-      // });
-    }
-  }
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
-    readQr();
+    // readQr();
     return Scaffold(
       body: QRView(
         key: qrKey,
@@ -294,9 +288,9 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
     );
   }
 
-  @override
-  void dispose() {
-    controller?.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   controller?.dispose();
+  //   super.dispose();
+  // }
 }

@@ -17,23 +17,20 @@ class ForgotPasswordPage extends StatefulWidget {
 }
 
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
-  // String? passwc1;
-  // String? passwc2;
-  // String? passwc3;
   _ForgotPasswordPageState(this.passwordc1, this.passwordc2, this.passwordc3);
   String? passwordc1;
   String? passwordc2;
   String? passwordc3;
-  // String _email = '';
+  String _email = '';
   bool isObscure = true;
   bool visible = false;
   final _formKey = GlobalKey<FormState>();
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController newPasscontroller = TextEditingController();
 
-  final _auth = FirebaseAuth.instance;
+/*  final _auth = FirebaseAuth.instance;
 
-/*
+
   createAlertDialog(BuildContext context) {
     return showDialog(
         context: context,
@@ -47,16 +44,13 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 elevation: 5.0,
                 child: Text('Ok'),
                 onPressed: () {
-                  /*
                   passwordReset();
-                  */
                 },
               ),
             ],
           );
         });
   }
-  */
 
   @override
   void dispose() {
@@ -64,7 +58,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     super.dispose();
   }
 
-  /*Future passwordReset() async {
+  Future passwordReset() async {
     try {
       await FirebaseAuth.instance
           .sendPasswordResetEmail(email: emailcontroller.text.trim());
@@ -80,9 +74,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 TextButton(
                   child: Text('Ok'),
                   onPressed: () {
-                    // Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    //     builder: (BuildContext context) =>
-                    //         SignIn()));
                     Get.to(SignIn());
                   },
                 ),
@@ -107,9 +98,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 TextButton(
                   child: Text('Ok'),
                   onPressed: () {
-                    // Navigator.pop(context);
-                    // emailcontroller.clear();
-
                     Get.back();
                     emailcontroller.clear();
                   },
@@ -135,9 +123,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 TextButton(
                   child: Text('Ok'),
                   onPressed: () {
-                    // Navigator.pop(context);
-                    // emailcontroller.clear();
-
                     Get.back();
                     emailcontroller.clear();
                   },
@@ -163,9 +148,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 TextButton(
                   child: Text('Ok'),
                   onPressed: () {
-                    // Navigator.pop(context);
-                    // emailcontroller.clear();
-
                     Get.back();
                     emailcontroller.clear();
                   },
@@ -176,7 +158,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         );
       }
     }
-  } */
+  }  */
 
   void forgotPassword() {
     try {
@@ -362,22 +344,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                               borderRadius: new BorderRadius.circular(10),
                             ),
                           ),
-
-                          // validator: (value) {
-                          //   if (value!.length == 0) {
-                          //     return "Email cannot be empty";
-                          //   }
-                          //   if (!RegExp(
-                          //           "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
-                          //       .hasMatch(value)) {
-                          //     return ("Please enter a valid email");
-                          //   } else {
-                          //     return null;
-                          //   }
-                          // },
-                          // onSaved: (value) {
-                          //   emailcontroller.text = value!;
-                          // },
                           // keyboardType: TextInputType.emailAddress,
                         ),
                       ),
@@ -393,14 +359,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                             height: 53,
                             onPressed: () {
                               /*
-                              // _auth.sendPasswordResetEmail(email: _email);
-                              // createAlertDialog(context);
-                              // Navigator.of(context).pop();
+                              if (_formKey.currentState!.validate()) {
+                                passwordReset();
+                              }    */
 
-                              // if (_formKey.currentState!.validate()) {
-                              //   passwordReset();
-                              // }
-                               */
                               forgotPassword();
                             },
                             child: Text(

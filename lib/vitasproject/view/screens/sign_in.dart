@@ -288,11 +288,34 @@ class _SignInState extends State<SignIn> {
                             ],
                           ),
                           SizedBox(height: 20),
-                          // LoginButton(
-                          //   passwordc1: passwordc1,
-                          //   passwordc2: passwordc2,
-                          //   passwordc3: passwordc3,
-                          // ),
+                          /*
+                          MaterialButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0))),
+                            minWidth: 360,
+                            elevation: 100,
+                            height: 53,
+                            onPressed: () async {
+                              signIn(emailController.text,
+                                  passwordController.text);
+                            },
+                            child: Text(
+                              'LOGIN',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                              ),
+                            ),
+                            color: Color.fromRGBO(30, 170, 241, 1),
+                          ), */
+
+                          /*
+                          LoginButton(
+                            passwordc1: passwordc1,
+                            passwordc2: passwordc2,
+                            passwordc3: passwordc3,
+                          ), */
 
                           MaterialButton(
                             shape: RoundedRectangleBorder(
@@ -386,8 +409,6 @@ class _SignInState extends State<SignIn> {
                                       });
                                 }
                               } else {
-                                print(emailController);
-                                print(passwordController);
                                 showDialog(
                                     context: context,
                                     builder: (context) {
@@ -426,7 +447,6 @@ class _SignInState extends State<SignIn> {
                             ),
                             color: Color.fromRGBO(30, 170, 241, 1),
                           ),
-
                           SizedBox(height: 20),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
@@ -455,7 +475,8 @@ class _SignInState extends State<SignIn> {
     );
   }
 
-/*// Method for determining who is the current log in user
+/*
+// Method for determining who is the current log in user
   void route() {
     User? user = FirebaseAuth.instance.currentUser;
     var kk = FirebaseFirestore.instance
