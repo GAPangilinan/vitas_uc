@@ -14,6 +14,7 @@ import 'package:vitas_uc/vitasproject/view/cashin/cashin_homescreen.dart';
 import 'package:vitas_uc/vitasproject/view/screens/sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:vitas_uc/vitasproject/view/widgets/cashin_button.dart';
+// import 'package:flutterme_credit_card/flutterme_credit_card.dart';
 
 class CashinBetScreen extends StatelessWidget {
   // const BetScreen({super.key});
@@ -150,9 +151,9 @@ class CashinBetScreen extends StatelessWidget {
                             shrinkWrap: true,
                             itemCount: snapshot.data.length,
                             itemBuilder: (context, i) {
+                              // return FMCreditCard();
                               return ListTile(
-                                title: Text(
-                                    '####-####-####-${snapshot.data[i].cardnumber}',
+                                title: Text(snapshot.data[i].cardnumber,
                                     style: TextStyle(
                                         fontSize: 15,
                                         color:
