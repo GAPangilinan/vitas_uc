@@ -14,7 +14,7 @@ import 'package:vitas_uc/vitasproject/view/cashin/cashin_homescreen.dart';
 import 'package:vitas_uc/vitasproject/view/screens/sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:vitas_uc/vitasproject/view/widgets/cashin_button.dart';
-// import 'package:flutterme_credit_card/flutterme_credit_card.dart';
+import 'package:flutterme_credit_card/flutterme_credit_card.dart';
 
 class CashinBetScreen extends StatelessWidget {
   // const BetScreen({super.key});
@@ -103,7 +103,8 @@ class CashinBetScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Container(
             height: MediaQuery.of(context).size.height * 1,
-            padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
+            // height: MediaQuery.of(context).size.height / 1.1,
+            padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 15.0),
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/background.jpg'),
@@ -114,7 +115,8 @@ class CashinBetScreen extends StatelessWidget {
               children: <Widget>[
                 SizedBox(height: 0),
                 Container(
-                  height: 120,
+                  // height: 120,
+                  height: MediaQuery.of(context).size.height * 0.15,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage('assets/logo.png'),
@@ -143,17 +145,16 @@ class CashinBetScreen extends StatelessWidget {
                           totalBalance = balMinFin;
                         }
 
-                        // for (int i = 0; i < cardnumber!.length - 4; i++) {
-                        //   print(i);
-                        // }
                         return ListView.builder(
                             scrollDirection: Axis.vertical,
                             shrinkWrap: true,
                             itemCount: snapshot.data.length,
                             itemBuilder: (context, i) {
-                              // return FMCreditCard();
+                              var asd = snapshot.data[i].cardnumber;
+                              asd.replaceRange(
+                                  12, asd.length, "#" * (asd.length - 4));
                               return ListTile(
-                                title: Text(snapshot.data[i].cardnumber,
+                                title: Text(asd, //Mask in Card Number
                                     style: TextStyle(
                                         fontSize: 15,
                                         color:
@@ -182,7 +183,8 @@ class CashinBetScreen extends StatelessWidget {
                       border: Border(
                         top: BorderSide(
                           color: Colors.blueAccent,
-                          width: 2.0,
+                          // width: 2.0,
+                          width: MediaQuery.of(context).size.width / 200,
                         ),
                       ),
                     ),
@@ -214,7 +216,8 @@ class CashinBetScreen extends StatelessWidget {
                       border: Border(
                         top: BorderSide(
                           color: Colors.blueAccent,
-                          width: 2.0,
+                          // width: 2.0,
+                          width: MediaQuery.of(context).size.width / 200,
                         ),
                       ),
                     ),
@@ -261,7 +264,8 @@ class CashinBetScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 15),
                 Container(
-                  height: 40,
+                  // height: 40,
+                  height: MediaQuery.of(context).size.height / 15,
                   child: TextFormField(
                     controller: amountController,
                     decoration: InputDecoration(
@@ -286,8 +290,10 @@ class CashinBetScreen extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     Container(
-                      height: 40,
-                      width: 75,
+                      // height: 40,
+                      // width: 75,
+                      height: MediaQuery.of(context).size.height * 0.06,
+                      width: MediaQuery.of(context).size.width * 0.213,
                       child: MaterialButton(
                         shape: RoundedRectangleBorder(
                             borderRadius:
@@ -295,6 +301,7 @@ class CashinBetScreen extends StatelessWidget {
                         minWidth: 100,
                         elevation: 100,
                         height: 53,
+                        // height: MediaQuery.of(context).size.height / 1.1,
                         onPressed: () async {
                           amount = 100;
                           amountController!.text = amount.toString();
@@ -312,8 +319,10 @@ class CashinBetScreen extends StatelessWidget {
                     ),
                     SizedBox(width: 10),
                     Container(
-                      height: 40,
-                      width: 75,
+                      // height: 40,
+                      // width: 75,
+                      height: MediaQuery.of(context).size.height * 0.06,
+                      width: MediaQuery.of(context).size.width * 0.213,
                       child: MaterialButton(
                         shape: RoundedRectangleBorder(
                             borderRadius:
@@ -321,6 +330,7 @@ class CashinBetScreen extends StatelessWidget {
                         minWidth: 100,
                         elevation: 100,
                         height: 53,
+                        // height: MediaQuery.of(context).size.height / 1.1,
                         onPressed: () async {
                           amount = 300;
                           amountController!.text = amount.toString();
@@ -338,8 +348,10 @@ class CashinBetScreen extends StatelessWidget {
                     ),
                     SizedBox(width: 10),
                     Container(
-                      height: 40,
-                      width: 75,
+                      // height: 40,
+                      // width: 75,
+                      height: MediaQuery.of(context).size.height * 0.06,
+                      width: MediaQuery.of(context).size.width * 0.213,
                       child: MaterialButton(
                         shape: RoundedRectangleBorder(
                             borderRadius:
@@ -347,6 +359,7 @@ class CashinBetScreen extends StatelessWidget {
                         minWidth: 100,
                         elevation: 100,
                         height: 53,
+                        // height: MediaQuery.of(context).size.height / 1.1,
                         onPressed: () async {
                           amount = 500;
                           amountController!.text = amount.toString();
@@ -364,15 +377,18 @@ class CashinBetScreen extends StatelessWidget {
                     ),
                     SizedBox(width: 10),
                     Container(
-                      height: 40,
-                      width: 75,
+                      // height: 40,
+                      // width: 75,
+                      height: MediaQuery.of(context).size.height * 0.06,
+                      width: MediaQuery.of(context).size.width * 0.213,
                       child: MaterialButton(
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
                         minWidth: 100,
                         elevation: 100,
-                        height: 53,
+                        // height: 53,
+                        // height: MediaQuery.of(context).size.height / 1.1,
                         onPressed: () async {
                           amount = 1000;
                           amountController!.text = amount.toString();
@@ -394,15 +410,18 @@ class CashinBetScreen extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     Container(
-                      height: 40,
-                      width: 75,
+                      // height: 40,
+                      // width: 75,
+                      height: MediaQuery.of(context).size.height * 0.06,
+                      width: MediaQuery.of(context).size.width * 0.213,
                       child: MaterialButton(
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
                         minWidth: 100,
                         elevation: 100,
-                        height: 53,
+                        // height: 53,
+                        // height: MediaQuery.of(context).size.height / 1.1,
                         onPressed: () async {
                           amount = 2000;
                           amountController!.text = amount.toString();
@@ -420,15 +439,18 @@ class CashinBetScreen extends StatelessWidget {
                     ),
                     SizedBox(width: 10),
                     Container(
-                      height: 40,
-                      width: 75,
+                      // height: 40,
+                      // width: 75,
+                      height: MediaQuery.of(context).size.height * 0.06,
+                      width: MediaQuery.of(context).size.width * 0.213,
                       child: MaterialButton(
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
                         minWidth: 100,
                         elevation: 100,
-                        height: 53,
+                        // height: 53,
+                        // height: MediaQuery.of(context).size.height / 1.1,
                         onPressed: () async {
                           amount = 3000;
                           amountController!.text = amount.toString();
@@ -446,15 +468,18 @@ class CashinBetScreen extends StatelessWidget {
                     ),
                     SizedBox(width: 10),
                     Container(
-                      height: 40,
-                      width: 75,
+                      // height: 40,
+                      // width: 75,
+                      height: MediaQuery.of(context).size.height * 0.06,
+                      width: MediaQuery.of(context).size.width * 0.213,
                       child: MaterialButton(
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
                         minWidth: 100,
                         elevation: 100,
-                        height: 53,
+                        // height: 53,
+                        // height: MediaQuery.of(context).size.height / 1.1,
                         onPressed: () async {
                           amount = 5000;
                           amountController!.text = amount.toString();
@@ -472,15 +497,18 @@ class CashinBetScreen extends StatelessWidget {
                     ),
                     SizedBox(width: 10),
                     Container(
-                      height: 40,
-                      width: 75,
+                      // height: 40,
+                      // width: 75,
+                      height: MediaQuery.of(context).size.height * 0.06,
+                      width: MediaQuery.of(context).size.width * 0.213,
                       child: MaterialButton(
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
                         minWidth: 100,
                         elevation: 100,
-                        height: 53,
+                        // height: 53,
+                        // height: MediaQuery.of(context).size.height / 1.1,
                         onPressed: () async {
                           // amount = 10000;
                           amountController!.text = maxBet.toString();
@@ -498,7 +526,7 @@ class CashinBetScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: 20),
                 Container(
                   //child: CashInButton(),
                   child: MaterialButton(
@@ -506,7 +534,8 @@ class CashinBetScreen extends StatelessWidget {
                         borderRadius: BorderRadius.all(Radius.circular(10.0))),
                     minWidth: 500,
                     elevation: 100,
-                    height: 53,
+                    // height: 53,
+                    height: MediaQuery.of(context).size.height / 15,
                     onPressed: () async {
                       if (amountController!.text.isNotEmpty) {
                         FinalResultAmount = int.parse(amountController!.text);
@@ -623,9 +652,10 @@ class CashinBetScreen extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
-                        minWidth: 161,
+                        minWidth: 185,
                         elevation: 100,
-                        height: 53,
+                        // height: 53,
+                        height: MediaQuery.of(context).size.height / 15,
                         onPressed: () async {
                           amountController!.clear();
                           FinalResultAmount = 0;
@@ -647,9 +677,10 @@ class CashinBetScreen extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
-                        minWidth: 161,
+                        minWidth: 185,
                         elevation: 100,
-                        height: 53,
+                        // height: 53,
+                        height: MediaQuery.of(context).size.height / 15,
                         onPressed: () async {
                           //route();
                           FinalResultAmount = 0;

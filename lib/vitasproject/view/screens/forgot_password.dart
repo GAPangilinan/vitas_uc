@@ -268,6 +268,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       body: SingleChildScrollView(
         child: SafeArea(
           child: Container(
+            // height: MediaQuery.of(context).size.height * 1,
             height: MediaQuery.of(context).size.height * 1,
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -282,7 +283,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 children: [
                   SizedBox(height: 20),
                   Container(
-                    height: 100,
+                    // height: 100,
+                    height: MediaQuery.of(context).size.height * 0.2,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/logo.png'),
@@ -317,7 +319,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                             border: Border(
                               top: BorderSide(
                                 color: Colors.blueAccent,
-                                width: 2.0,
+                                // width: 2.0,
+                                width: MediaQuery.of(context).size.width / 200,
                               ),
                             ),
                           ),
@@ -356,7 +359,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                     BorderRadius.all(Radius.circular(10.0))),
                             minWidth: 360,
                             elevation: 100,
-                            height: 53,
+                            // height: 53,
+                            height: MediaQuery.of(context).size.height / 12,
                             onPressed: () {
                               /*
                               if (_formKey.currentState!.validate()) {
@@ -384,7 +388,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                             border: Border(
                               top: BorderSide(
                                 color: Colors.blueAccent,
-                                width: 2.0,
+                                // width: 2.0,
+                                width: MediaQuery.of(context).size.width / 200,
                               ),
                             ),
                           ),

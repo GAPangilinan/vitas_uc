@@ -114,6 +114,7 @@ class _SignInState extends State<SignIn> {
             children: <Widget>[
               Container(
                 height: MediaQuery.of(context).size.height * 1,
+                // height: MediaQuery.of(context).size.height / 1.1,
                 padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
                 decoration: BoxDecoration(
                   image: DecorationImage(
@@ -123,16 +124,17 @@ class _SignInState extends State<SignIn> {
                 ),
                 child: Center(
                   child: Container(
-                    margin: EdgeInsets.all(12),
+                    //margin: EdgeInsets.all(12),
                     child: Form(
                       key: _formkey,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          SizedBox(height: 20),
+                          SizedBox(height: 0),
                           Container(
-                            height: 100,
+                            // height: 100,
+                            height: MediaQuery.of(context).size.height * 0.2,
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 image: AssetImage('assets/logo.png'),
@@ -162,7 +164,9 @@ class _SignInState extends State<SignIn> {
                                 border: Border(
                                   top: BorderSide(
                                     color: Colors.blueAccent,
-                                    width: 2.0,
+                                    // width: 2.0,
+                                    width:
+                                        MediaQuery.of(context).size.width / 200,
                                   ),
                                 ),
                               ),
@@ -179,13 +183,13 @@ class _SignInState extends State<SignIn> {
                               contentPadding: const EdgeInsets.only(
                                   left: 14.0, bottom: 16.0, top: 16.0),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: /*new*/ const BorderSide(
-                                    color: Colors.white),
+                                borderSide: /*new*/
+                                    const BorderSide(color: Colors.white),
                                 borderRadius: new BorderRadius.circular(10),
                               ),
                               enabledBorder: UnderlineInputBorder(
-                                borderSide: /*new*/ const BorderSide(
-                                    color: Colors.white),
+                                borderSide: /*new*/
+                                    const BorderSide(color: Colors.white),
                                 borderRadius: new BorderRadius.circular(10),
                               ),
                             ),
@@ -201,11 +205,11 @@ class _SignInState extends State<SignIn> {
                             //     return null;
                             //   }
                             // },
-                            onSaved: (Value) {
-                              setState(() {
-                                LoginModel(email: emailController.text);
-                              });
-                            },
+                            // onSaved: (Value) {
+                            //   setState(() {
+                            //     LoginModel(email: emailController.text);
+                            //   });
+                            // },
                             //keyboardType: TextInputType.emailAddress,
                           ),
                           SizedBox(height: 20),
@@ -237,12 +241,12 @@ class _SignInState extends State<SignIn> {
                                 borderRadius: new BorderRadius.circular(10),
                               ),
                             ),
-                            onSaved: (Value) {
-                              setState(() {
-                                LoginModel(password: passwordController.text);
-                              });
-                            },
-                            keyboardType: TextInputType.visiblePassword,
+                            // onSaved: (Value) {
+                            //   setState(() {
+                            //     LoginModel(password: passwordController.text);
+                            //   });
+                            // },
+                            // keyboardType: TextInputType.visiblePassword,
                           ),
                           Row(
                             children: [
@@ -256,8 +260,13 @@ class _SignInState extends State<SignIn> {
                                   });
                                 },
                               ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+                              //CHECKBOX & REMEMBER ME TEXT BUTTON
+                              TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    isChecked = !isChecked;
+                                  });
+                                },
                                 child: const Text(
                                   'Remember Me',
                                   style: TextStyle(
@@ -267,7 +276,7 @@ class _SignInState extends State<SignIn> {
                               ),
                               //SizedBox(width: 60),
                               Padding(
-                                padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                                padding: const EdgeInsets.fromLTRB(70, 0, 0, 0),
                                 child: TextButton(
                                   child: const Text(
                                     'Forgot Password',
@@ -323,7 +332,8 @@ class _SignInState extends State<SignIn> {
                                     BorderRadius.all(Radius.circular(10.0))),
                             minWidth: 360,
                             elevation: 100,
-                            height: 53,
+                            // height: 53,
+                            height: MediaQuery.of(context).size.height / 12,
                             onPressed: () {
                               setState(() {
                                 visible = true;
@@ -455,7 +465,9 @@ class _SignInState extends State<SignIn> {
                                 border: Border(
                                   top: BorderSide(
                                     color: Colors.blueAccent,
-                                    width: 2.0,
+                                    // width: 2.0,
+                                    width:
+                                        MediaQuery.of(context).size.width / 200,
                                   ),
                                 ),
                               ),

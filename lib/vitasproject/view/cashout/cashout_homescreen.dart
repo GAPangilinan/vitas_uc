@@ -45,8 +45,9 @@ class CashoutHomeScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Container(
             height: MediaQuery.of(context).size.height * 1,
-            width: MediaQuery.of(context).size.width * 1,
-            padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
+            // width: MediaQuery.of(context).size.width * 1,
+            // height: MediaQuery.of(context).size.height / 1.1,
+            padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 15.0),
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/background.jpg'),
@@ -57,7 +58,8 @@ class CashoutHomeScreen extends StatelessWidget {
               children: <Widget>[
                 SizedBox(height: 0),
                 Container(
-                  height: 120,
+                  // height: 120,
+                  height: MediaQuery.of(context).size.height * 0.2,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage('assets/logo.png'),
@@ -80,7 +82,7 @@ class CashoutHomeScreen extends StatelessWidget {
                           fontFamily: 'Roboto',
                         ),
                       ),
-                      SizedBox(width: 130),
+                      SizedBox(width: 180),
                       IconButton(
                         icon: Icon(Icons.login_rounded),
                         iconSize: 30,
@@ -109,7 +111,7 @@ class CashoutHomeScreen extends StatelessWidget {
                         fontFamily: 'Roboto',
                       ),
                     ),
-                    SizedBox(width: 130),
+                    SizedBox(width: 180),
                     Text(
                       NumberFormat('#,###.00#', 'en-US').format(cashiermoney),
                       style: TextStyle(
@@ -130,7 +132,8 @@ class CashoutHomeScreen extends StatelessWidget {
                       border: Border(
                         top: BorderSide(
                           color: Colors.blueAccent,
-                          width: 2.0,
+                          // width: 2.0,
+                          width: MediaQuery.of(context).size.width / 200,
                         ),
                       ),
                     ),
@@ -162,7 +165,8 @@ class CashoutHomeScreen extends StatelessWidget {
                       border: Border(
                         top: BorderSide(
                           color: Colors.blueAccent,
-                          width: 2.0,
+                          // width: 2.0,
+                          width: MediaQuery.of(context).size.width / 200,
                         ),
                       ),
                     ),
@@ -215,8 +219,10 @@ class CashoutHomeScreen extends StatelessWidget {
                       padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                       child: InkWell(
                         child: Container(
-                          height: 150,
-                          width: 160,
+                          // height: 150,
+                          // width: 160,
+                          height: MediaQuery.of(context).size.height * 0.2,
+                          width: MediaQuery.of(context).size.width * 0.3,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               image: AssetImage('assets/qr icon.png'),
@@ -224,11 +230,6 @@ class CashoutHomeScreen extends StatelessWidget {
                           ),
                         ),
                         onTap: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //       builder: (context) => CashoutBetScreen()),
-                          // );
                           Get.to(QRScannerScreen(
                             cashierstatus: cashierstatus,
                             fullName: fullName,
@@ -246,8 +247,10 @@ class CashoutHomeScreen extends StatelessWidget {
                       padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                       child: InkWell(
                         child: Container(
-                          height: 150,
-                          width: 160,
+                          // height: 150,
+                          // width: 160,
+                          height: MediaQuery.of(context).size.height * 0.2,
+                          width: MediaQuery.of(context).size.width * 0.37,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               image: AssetImage('assets/nfc icon.png'),

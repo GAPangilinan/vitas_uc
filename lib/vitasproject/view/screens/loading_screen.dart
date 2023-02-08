@@ -30,18 +30,20 @@ class _LoadingScreenState extends State<LoadingScreen> {
       backgroundColor: Color.fromRGBO(62, 58, 57, 1),
       body: SafeArea(
         child: Container(
+          width: MediaQuery.of(context).size.width * 1,
           decoration: Background(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                height: 300,
+                // height: 300,
+                height: MediaQuery.of(context).size.height * 0.5,
                 decoration: BoxDecoration(
                   image:
                       DecorationImage(image: AssetImage('assets/splash.png')),
                 ),
               ),
-              SizedBox(height: 30),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.1),
               LinearPercentIndicator(
                 animation: true,
                 animationDuration: 2770,
