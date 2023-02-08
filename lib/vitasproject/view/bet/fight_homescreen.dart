@@ -10,6 +10,9 @@ import 'package:vitas_uc/vitasproject/view/bet/fight_betscreen.dart';
 import 'package:vitas_uc/vitasproject/view/screens/qrscanner_screen.dart';
 import 'package:vitas_uc/vitasproject/view/screens/sign_in.dart';
 
+import '../widgets/nfc_icon.dart';
+import '../widgets/qr_icon.dart';
+
 class FightHomeScreen extends StatelessWidget {
   //const HomeScreen({super.key});
   String cashierstatus = 'FIGHT NO: 1';
@@ -378,55 +381,24 @@ class FightHomeScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                      child: InkWell(
-                        child: Container(
-                          // height: 150,
-                          // width: 160,
-                          height: MediaQuery.of(context).size.height * 0.2,
-                          width: MediaQuery.of(context).size.height * 0.2,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('assets/qr icon.png'),
-                            ),
-                          ),
-                        ),
-                        onTap: () {
-                          Get.to(QRScannerScreen(
-                            cashierstatus: cashierstatus,
-                            fullName: fullName,
-                            passwordc1: passwordc1,
-                            passwordc2: passwordc2,
-                            passwordc3: passwordc3,
-                            FinalResultAmount: FinalResultAmount,
-                            totalBalance: totalBalance,
-                          ));
-                        },
-                      ),
+                    //QR ICON BUTTON
+                    QRiconButton(
+                      fullName: fullName,
+                      passwordc1: passwordc1,
+                      passwordc2: passwordc2,
+                      passwordc3: passwordc3,
+                      totalBalance: totalBalance,
+                      FinalResultAmount: FinalResultAmount,
                     ),
                     SizedBox(width: 10),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                      child: InkWell(
-                        child: Container(
-                          // height: 150,
-                          // width: 160,
-                          height: MediaQuery.of(context).size.height * 0.3,
-                          width: MediaQuery.of(context).size.width * 0.37,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('assets/nfc icon.png'),
-                            ),
-                          ),
-                        ),
-                        onTap: () {
-                          Get.to(FightBetScreen(
-                              passwordc1: passwordc1,
-                              passwordc2: passwordc2,
-                              passwordc3: passwordc3));
-                        },
-                      ),
+                    //NFC ICON BUTTON
+                    NFCiconButton(
+                      fullName: fullName,
+                      passwordc1: passwordc1,
+                      passwordc2: passwordc2,
+                      passwordc3: passwordc3,
+                      totalBalance: totalBalance,
+                      FinalResultAmount: FinalResultAmount,
                     ),
                   ],
                 ),

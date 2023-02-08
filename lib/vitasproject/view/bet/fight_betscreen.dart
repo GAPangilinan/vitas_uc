@@ -9,6 +9,13 @@ import 'package:vitas_uc/vitasproject/view/bet/fight_homescreen.dart';
 import 'package:vitas_uc/vitasproject/view/screens/sign_in.dart';
 import 'package:http/http.dart' as http;
 
+import '../widgets/cancel_button.dart';
+import '../widgets/cashin_button.dart';
+import '../widgets/clear_button.dart';
+import '../widgets/components/amount_row1.dart';
+import '../widgets/components/amount_row2.dart';
+import '../widgets/components/input_amount.dart';
+
 // import '../models/vitasmodel.dart';
 // import '../../services/database.dart';
 
@@ -80,6 +87,7 @@ class FightBetScreen extends StatelessWidget {
   }
 
   // final AuthService _auth = AuthService();
+  final formKey = GlobalKey<FormState>();
   TextEditingController amountController = TextEditingController();
   int maxBet = 10000;
   int numOne = 0;
@@ -378,462 +386,38 @@ class FightBetScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 15),
-                Container(
-                  // height: 40,
-                  height: MediaQuery.of(context).size.height / 15,
-                  child: TextFormField(
-                    controller: amountController,
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white,
-                      hintText: 'Amount',
-                      enabled: true,
-                      contentPadding: const EdgeInsets.only(
-                          left: 14.0, bottom: 12.0, top: 12.0),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: new BorderSide(color: Colors.white),
-                        borderRadius: new BorderRadius.circular(10),
-                      ),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: new BorderSide(color: Colors.white),
-                        borderRadius: new BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
-                ),
+                //INPUT AMOUNT
+                InputAmount(
+                    amountController: amountController, formKey: formKey),
                 SizedBox(height: 15),
-                Row(
-                  children: <Widget>[
-                    Container(
-                      // height: 40,
-                      // width: 75,
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: MediaQuery.of(context).size.width * 0.213,
-                      child: MaterialButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10.0))),
-                        minWidth: 100,
-                        elevation: 100,
-                        height: 53,
-                        // height: MediaQuery.of(context).size.height / 1.1,
-                        onPressed: () async {
-                          amount = 100;
-                          amountController.text = amount.toString();
-                        },
-                        child: Text(
-                          'Min',
-                          style: TextStyle(
-                            letterSpacing: 2.0,
-                            fontSize: 15,
-                            color: Colors.white,
-                          ),
-                        ),
-                        color: Color.fromRGBO(53, 183, 54, 1),
-                      ),
-                    ),
-                    SizedBox(width: 10),
-                    Container(
-                      // height: 40,
-                      // width: 75,
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: MediaQuery.of(context).size.width * 0.213,
-                      child: MaterialButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10.0))),
-                        minWidth: 100,
-                        elevation: 100,
-                        height: 53,
-                        // height: MediaQuery.of(context).size.height / 1.1,
-                        onPressed: () async {
-                          amount = 300;
-                          amountController.text = amount.toString();
-                        },
-                        child: Text(
-                          '300',
-                          style: TextStyle(
-                            letterSpacing: 2.0,
-                            fontSize: 15,
-                            color: Colors.white,
-                          ),
-                        ),
-                        color: Color.fromRGBO(53, 183, 54, 1),
-                      ),
-                    ),
-                    SizedBox(width: 10),
-                    Container(
-                      // height: 40,
-                      // width: 75,
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: MediaQuery.of(context).size.width * 0.213,
-                      child: MaterialButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10.0))),
-                        minWidth: 100,
-                        elevation: 100,
-                        height: 53,
-                        // height: MediaQuery.of(context).size.height / 1.1,
-                        onPressed: () async {
-                          amount = 500;
-                          amountController.text = amount.toString();
-                        },
-                        child: Text(
-                          '500',
-                          style: TextStyle(
-                            letterSpacing: 2.0,
-                            fontSize: 15,
-                            color: Colors.white,
-                          ),
-                        ),
-                        color: Color.fromRGBO(53, 183, 54, 1),
-                      ),
-                    ),
-                    SizedBox(width: 10),
-                    Container(
-                      // height: 40,
-                      // width: 75,
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: MediaQuery.of(context).size.width * 0.213,
-                      child: MaterialButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10.0))),
-                        minWidth: 100,
-                        elevation: 100,
-                        height: 53,
-                        // height: MediaQuery.of(context).size.height / 1.1,
-                        onPressed: () async {
-                          amount = 1000;
-                          amountController.text = amount.toString();
-                        },
-                        child: Text(
-                          '1000',
-                          style: TextStyle(
-                            letterSpacing: 2.0,
-                            fontSize: 15,
-                            color: Colors.white,
-                          ),
-                        ),
-                        color: Color.fromRGBO(53, 183, 54, 1),
-                      ),
-                    ),
-                  ],
-                ),
+                //ROW 1 AMOUNT BUTTONS
+                AmountRow1(amountController: amountController),
                 SizedBox(height: 10),
-                Row(
-                  children: <Widget>[
-                    Container(
-                      // height: 40,
-                      // width: 75,
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: MediaQuery.of(context).size.width * 0.213,
-                      child: MaterialButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10.0))),
-                        minWidth: 100,
-                        elevation: 100,
-                        height: 53,
-                        // height: MediaQuery.of(context).size.height / 1.1,
-                        onPressed: () async {
-                          amount = 2000;
-                          amountController.text = amount.toString();
-                        },
-                        child: Text(
-                          '2000',
-                          style: TextStyle(
-                            letterSpacing: 2.0,
-                            fontSize: 15,
-                            color: Colors.white,
-                          ),
-                        ),
-                        color: Color.fromRGBO(53, 183, 54, 1),
-                      ),
-                    ),
-                    SizedBox(width: 10),
-                    Container(
-                      // height: 40,
-                      // width: 75,
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: MediaQuery.of(context).size.width * 0.213,
-                      child: MaterialButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10.0))),
-                        minWidth: 100,
-                        elevation: 100,
-                        height: 53,
-                        // height: MediaQuery.of(context).size.height / 1.1,
-                        onPressed: () async {
-                          amount = 3000;
-                          amountController.text = amount.toString();
-                        },
-                        child: Text(
-                          '3000',
-                          style: TextStyle(
-                            letterSpacing: 2.0,
-                            fontSize: 15,
-                            color: Colors.white,
-                          ),
-                        ),
-                        color: Color.fromRGBO(53, 183, 54, 1),
-                      ),
-                    ),
-                    SizedBox(width: 10),
-                    Container(
-                      // height: 40,
-                      // width: 75,
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: MediaQuery.of(context).size.width * 0.213,
-                      child: MaterialButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10.0))),
-                        minWidth: 100,
-                        elevation: 100,
-                        height: 53,
-                        // height: MediaQuery.of(context).size.height / 1.1,
-                        onPressed: () async {
-                          amount = 5000;
-                          numOne = FinalResultAmount!;
-                          amountController.text = amount.toString();
-                        },
-                        child: Text(
-                          '5000',
-                          style: TextStyle(
-                            letterSpacing: 2.0,
-                            fontSize: 15,
-                            color: Colors.white,
-                          ),
-                        ),
-                        color: Color.fromRGBO(53, 183, 54, 1),
-                      ),
-                    ),
-                    SizedBox(width: 10),
-                    Container(
-                      // height: 40,
-                      // width: 75,
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: MediaQuery.of(context).size.width * 0.213,
-                      child: MaterialButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10.0))),
-                        minWidth: 100,
-                        elevation: 100,
-                        height: 53,
-                        // height: MediaQuery.of(context).size.height / 1.1,
-                        onPressed: () async {
-                          // amount = 10000;
-                          amountController.text = maxBet.toString();
-                        },
-                        child: Text(
-                          'Max',
-                          style: TextStyle(
-                            letterSpacing: 2.0,
-                            fontSize: 15,
-                            color: Colors.white,
-                          ),
-                        ),
-                        color: Color.fromRGBO(53, 183, 54, 1),
-                      ),
-                    ),
-                  ],
-                ),
+                //ROW 2 AMOUNT BUTTONS
+                AmountRow2(amountController: amountController),
                 SizedBox(height: 20),
-                Container(
-                  child: MaterialButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                    minWidth: 500,
-                    elevation: 100,
-                    // height: 53,
-                    height: MediaQuery.of(context).size.height / 15,
-                    onPressed: () async {
-                      // String resultAmount = amountController.text
-                      //     .replaceAll(RegExp('[^A-Za-z0-9]'), '');
-                      // int finaleResultAmount = int.parse(resultAmount
-                      //     .toString()
-                      //     .replaceAll(RegExp('[^0-9]'), ''));
-
-                      if (amountController.text.isNotEmpty) {
-                        FinalResultAmount = int.parse(amountController.text);
-                        if (FinalResultAmount! <= totalBalance!) {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20.0)),
-                                ),
-                                title: Text('Cash In'),
-                                content: Text('Are you sure? \n\n' +
-                                    'Amount          :     ${FinalResultAmount}.00\n' +
-                                    'Bal. Before    :     ${totalBalance}.00\n' +
-                                    'Bal. After       :     ${totalBalance! - FinalResultAmount!}.00\n' +
-                                    'Fee                 :     0.00\n' +
-                                    'Date               :     2022 08-04-02 03:48\n\n'),
-                                actions: [
-                                  TextButton(
-                                    child: Text('Yes'),
-                                    onPressed: () {
-                                      Get.to(FightHomeScreen(
-                                        FinalResultAmount: FinalResultAmount,
-                                        totalBalance: totalBalance,
-                                      ));
-                                    },
-                                  ),
-                                  TextButton(
-                                    child: Text('No'),
-                                    onPressed: () {
-                                      // Navigator.pop(context);
-                                      // amountController.clear();
-                                      // FinalResultAmount = 0;
-
-                                      Get.back();
-                                      amountController.clear();
-                                      FinalResultAmount = 0;
-                                    },
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        } else if (FinalResultAmount! > totalBalance!) {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20.0)),
-                                ),
-                                icon: Icon(Icons.notifications),
-                                title: Text('Insufficient Balance'),
-                                content: Text(
-                                  'You do not have enough balance to perform this transaction. Please check and try again or contact support on ibayadsupport@ibayad.com',
-                                  textAlign: TextAlign.justify,
-                                ),
-                                actions: [
-                                  TextButton(
-                                    child: Text('Ok'),
-                                    onPressed: () {
-                                      // Navigator.pop(context);
-                                      // amountController.clear();
-                                      // FinalResultAmount = 0;
-                                      Get.back();
-                                      amountController.clear();
-                                      FinalResultAmount = 0;
-                                    },
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        }
-                      } else {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20.0)),
-                              ),
-                              title: Text('Invalid Cash In'),
-                              content: Text(
-                                  'Please enter the amount you want to cash in.'),
-                              actions: [
-                                TextButton(
-                                  child: Text('Ok'),
-                                  onPressed: () {
-                                    // Navigator.pop(context);
-                                    // amountController.clear();
-                                    // FinalResultAmount = 0;
-
-                                    Get.back();
-                                    amountController.clear();
-                                    FinalResultAmount = 0;
-                                  },
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      }
-                    },
-                    child: Text(
-                      'CASH IN',
-                      style: TextStyle(
-                        letterSpacing: 2.0,
-                        fontSize: 15,
-                        color: Colors.white,
-                      ),
-                    ),
-                    color: Color.fromRGBO(226, 32, 44, 1),
-                  ),
-                ),
+                //CASH IN BUTTON
+                CashinButton(
+                    amountController: amountController,
+                    FinalResultAmount: FinalResultAmount,
+                    totalBalance: totalBalance),
                 SizedBox(height: 10),
                 Row(
                   children: <Widget>[
-                    Container(
-                      child: MaterialButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10.0))),
-                        minWidth: 185,
-                        elevation: 100,
-                        // height: 53,
-                        height: MediaQuery.of(context).size.height / 15,
-                        onPressed: () async {
-                          amountController.clear();
-                          FinalResultAmount = 0;
-                        },
-                        child: Text(
-                          'CLEAR',
-                          style: TextStyle(
-                            letterSpacing: 2.0,
-                            fontSize: 15,
-                            color: Colors.white,
-                          ),
-                        ),
-                        color: Color.fromRGBO(67, 67, 67, 1),
-                      ),
+                    //CLEAR BUTTON
+                    ClearButton(
+                      amountController: amountController,
+                      FinalResultAmount: FinalResultAmount,
                     ),
                     SizedBox(width: 10),
-                    Container(
-                      child: MaterialButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10.0))),
-                        minWidth: 185,
-                        elevation: 100,
-                        // height: 53,
-                        height: MediaQuery.of(context).size.height / 15,
-                        onPressed: () async {
-                          FinalResultAmount = 0;
-                          Get.to(FightHomeScreen(
-                            fullName: fullName,
-                            passwordc1: passwordc1,
-                            passwordc2: passwordc2,
-                            passwordc3: passwordc3,
-                            FinalResultAmount: FinalResultAmount,
-                            totalBalance: totalBalance,
-                          ));
-                        },
-                        child: Text(
-                          'CANCEL',
-                          style: TextStyle(
-                            letterSpacing: 2.0,
-                            fontSize: 15,
-                            color: Colors.white,
-                          ),
-                        ),
-                        color: Color.fromRGBO(67, 67, 67, 1),
-                      ),
+                    //CANCEL BUTTON
+                    CancelButton(
+                      passwordc1: passwordc1,
+                      passwordc2: passwordc2,
+                      passwordc3: passwordc3,
+                      fullName: fullName,
+                      FinalResultAmount: FinalResultAmount,
+                      totalBalance: totalBalance,
                     ),
                   ],
                 ),
@@ -846,17 +430,17 @@ class FightBetScreen extends StatelessWidget {
     //);
   }
 
-  Future<void> logout(BuildContext context) async {
-    CircularProgressIndicator();
-    await FirebaseAuth.instance.signOut();
-    // Navigator.pushReplacement(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => SignIn(),
-    //   ),
-    // );
-    Get.to(SignIn());
-  }
+  // Future<void> logout(BuildContext context) async {
+  //   CircularProgressIndicator();
+  //   await FirebaseAuth.instance.signOut();
+  //   // Navigator.pushReplacement(
+  //   //   context,
+  //   //   MaterialPageRoute(
+  //   //     builder: (context) => SignIn(),
+  //   //   ),
+  //   // );
+  //   Get.to(SignIn());
+  // }
 }
 
 class Paycard {
