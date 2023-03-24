@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../constants.dart';
+
 class InputAmount extends StatelessWidget {
   TextEditingController? amountController = TextEditingController();
   GlobalKey? formKey = GlobalKey<FormState>();
@@ -13,22 +15,8 @@ class InputAmount extends StatelessWidget {
       child: TextFormField(
         key: formKey,
         controller: amountController,
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: Colors.white,
-          hintText: 'Amount',
-          enabled: true,
-          contentPadding:
-              const EdgeInsets.only(left: 14.0, bottom: 12.0, top: 12.0),
-          focusedBorder: OutlineInputBorder(
-            borderSide: new BorderSide(color: Colors.white),
-            borderRadius: new BorderRadius.circular(10),
-          ),
-          enabledBorder: UnderlineInputBorder(
-            borderSide: new BorderSide(color: Colors.white),
-            borderRadius: new BorderRadius.circular(10),
-          ),
-        ),
+        decoration: amountInputDecoration,
+        keyboardType: TextInputType.number,
       ),
     );
   }

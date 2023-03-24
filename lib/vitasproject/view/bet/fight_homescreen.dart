@@ -3,14 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:vitas_uc/vitasproject/view/bet/fight_betscreen.dart';
-// import 'package:vitas_uc/vitasproject/view/models/vitasmodel.dart';
-//import 'package:vitas_uc/vitasproject/services/auth.dart';
-// import 'package:vitas_uc/vitasproject/services/database.dart';
-import 'package:vitas_uc/vitasproject/view/screens/qrscanner_screen.dart';
+import 'package:vitas_uc/vitasproject/view/constants.dart';
 import 'package:vitas_uc/vitasproject/view/screens/sign_in.dart';
 
-import '../widgets/nfc_icon.dart';
+import '../widgets/nfc_bet_icon.dart';
 import '../widgets/qr_icon.dart';
 
 class FightHomeScreen extends StatelessWidget {
@@ -45,45 +41,32 @@ class FightHomeScreen extends StatelessWidget {
       backgroundColor: Color.fromRGBO(62, 58, 57, 1),
       body: SafeArea(
         child: SingleChildScrollView(
+          //BACKGROUND IMAGE
           child: Container(
             height: MediaQuery.of(context).size.height * 1,
-            // height: MediaQuery.of(context).size.height / 1.1,
             padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 15.0),
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/background.jpg'),
-                fit: BoxFit.cover,
-              ),
-            ),
+            decoration: bgImage,
             child: Column(
               children: <Widget>[
                 SizedBox(height: 0),
+                //LOGO
                 Container(
                   // height: 120,
                   height: MediaQuery.of(context).size.height * 0.2,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/logo.png'),
-                    ),
-                  ),
+                  decoration: bgLogo,
                 ),
                 SizedBox(height: 30),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                   child: Row(
                     children: <Widget>[
+                      //CASHIER NAME & SIGN-OUT ICON HEADER
                       Text(
                         //fullName!,
                         'Coco Martin',
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Color.fromRGBO(102, 102, 102, 1),
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 2.0,
-                          fontFamily: 'Roboto',
-                        ),
+                        style: cnHeaderTextStyle,
                       ),
-                      SizedBox(width: 225),
+                      SizedBox(width: 205),
                       IconButton(
                         icon: Icon(Icons.login_rounded),
                         iconSize: 30,
@@ -100,90 +83,55 @@ class FightHomeScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 0),
+                //CASHIER TEXT & AMOUNT HEADER
                 Row(
                   children: <Widget>[
                     Text(
                       'Cashier',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Color.fromRGBO(102, 102, 102, 1),
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 3.0,
-                        fontFamily: 'Roboto',
-                      ),
+                      style: ctaHeaderTextStyle,
                     ),
-                    SizedBox(width: 180),
+                    SizedBox(width: 160),
                     Text(
                       NumberFormat('#,###.00#', 'en-US').format(cashiermoney),
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Color.fromRGBO(102, 102, 102, 1),
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 3.0,
-                        fontFamily: 'Roboto',
-                      ),
+                      style: ctaHeaderTextStyle,
                     ),
                   ],
                 ),
                 SizedBox(height: 10),
+                //BLUE-BORDER LINE
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                   child: Container(
-                    decoration: BoxDecoration(
-                      border: Border(
-                        top: BorderSide(
-                          color: Colors.blueAccent,
-                          // width: 2.0,
-                          width: MediaQuery.of(context).size.width / 200,
-                        ),
-                      ),
-                    ),
+                    decoration: bbDecoration,
                   ),
                 ),
                 SizedBox(height: 10),
+                //GREEN OPEN TEXT
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                   child: Row(
                     children: [
                       Text(
                         cashierstatus,
-                        style: TextStyle(
-                          fontSize: 19,
-                          color: Color.fromRGBO(102, 102, 102, 1),
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 3.0,
-                          fontFamily: 'Roboto',
-                        ),
+                        style: fTextStyle,
                       ),
-                      SizedBox(width: 130),
+                      SizedBox(width: 160),
                       Text(
                         'OPEN',
-                        style: TextStyle(
-                          fontSize: 19,
-                          color: Color.fromRGBO(54, 191, 54, 1),
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 3.0,
-                          fontFamily: 'Roboto',
-                        ),
+                        style: GreenTextStyle,
                       ),
                     ],
                   ),
                 ),
                 SizedBox(height: 10),
+                //BLUE-BORDER LINE
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                   child: Container(
-                    decoration: BoxDecoration(
-                      border: Border(
-                        top: BorderSide(
-                          color: Colors.blueAccent,
-                          // width: 2.0,
-                          width: MediaQuery.of(context).size.width / 200,
-                        ),
-                      ),
-                    ),
+                    decoration: bbDecoration,
                   ),
                 ),
+                //BET INFORMATION
                 SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -193,13 +141,7 @@ class FightHomeScreen extends StatelessWidget {
                       child: Text(
                         'MERON',
                         textAlign: TextAlign.left,
-                        style: TextStyle(
-                          fontSize: 10,
-                          color: Colors.red,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 3.0,
-                          fontFamily: 'Roboto',
-                        ),
+                        style: mLeftInfoTextStyle,
                       ),
                     ),
                     Expanded(
@@ -207,13 +149,7 @@ class FightHomeScreen extends StatelessWidget {
                       child: Text(
                         'VS',
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 10,
-                          color: Color.fromRGBO(102, 102, 102, 1),
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 3.0,
-                          fontFamily: 'Roboto',
-                        ),
+                        style: middleBetInfoStextStyle,
                       ),
                     ),
                     Expanded(
@@ -221,13 +157,7 @@ class FightHomeScreen extends StatelessWidget {
                       child: Text(
                         'WALA',
                         textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontSize: 10,
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 3.0,
-                          fontFamily: 'Roboto',
-                        ),
+                        style: wRightInfoTextStyle,
                       ),
                     ),
                   ],
@@ -241,13 +171,7 @@ class FightHomeScreen extends StatelessWidget {
                       child: Text(
                         'Talisayin',
                         textAlign: TextAlign.left,
-                        style: TextStyle(
-                          fontSize: 10,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 3.0,
-                          fontFamily: 'Roboto',
-                        ),
+                        style: wBetInfoTextStyle,
                       ),
                     ),
                     Expanded(
@@ -255,13 +179,7 @@ class FightHomeScreen extends StatelessWidget {
                       child: Text(
                         'BREED',
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 10,
-                          color: Color.fromRGBO(102, 102, 102, 1),
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 3.0,
-                          fontFamily: 'Roboto',
-                        ),
+                        style: middleBetInfoStextStyle,
                       ),
                     ),
                     Expanded(
@@ -269,13 +187,7 @@ class FightHomeScreen extends StatelessWidget {
                       child: Text(
                         'Roundhed',
                         textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontSize: 10,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 3.0,
-                          fontFamily: 'Roboto',
-                        ),
+                        style: wBetInfoTextStyle,
                       ),
                     ),
                   ],
@@ -289,13 +201,7 @@ class FightHomeScreen extends StatelessWidget {
                       child: Text(
                         'Pedro Martinez',
                         textAlign: TextAlign.left,
-                        style: TextStyle(
-                          fontSize: 10,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 3.0,
-                          fontFamily: 'Roboto',
-                        ),
+                        style: wBetInfoTextStyle,
                       ),
                     ),
                     SizedBox(width: 1),
@@ -304,13 +210,7 @@ class FightHomeScreen extends StatelessWidget {
                       child: Text(
                         'OWNER',
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 10,
-                          color: Color.fromRGBO(102, 102, 102, 1),
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 3.0,
-                          fontFamily: 'Roboto',
-                        ),
+                        style: middleBetInfoStextStyle,
                       ),
                     ),
                     Expanded(
@@ -318,13 +218,7 @@ class FightHomeScreen extends StatelessWidget {
                       child: Text(
                         'Ronald Marasigan',
                         textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontSize: 10,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 3.0,
-                          fontFamily: 'Roboto',
-                        ),
+                        style: wBetInfoTextStyle,
                       ),
                     ),
                   ],
@@ -338,13 +232,7 @@ class FightHomeScreen extends StatelessWidget {
                       child: Text(
                         '100,000,000.00',
                         textAlign: TextAlign.left,
-                        style: TextStyle(
-                          fontSize: 10,
-                          color: Colors.red,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 3.0,
-                          fontFamily: 'Roboto',
-                        ),
+                        style: mLeftInfoTextStyle,
                       ),
                     ),
                     Expanded(
@@ -352,13 +240,7 @@ class FightHomeScreen extends StatelessWidget {
                       child: Text(
                         'BET',
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 10,
-                          color: Color.fromRGBO(102, 102, 102, 1),
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 3.0,
-                          fontFamily: 'Roboto',
-                        ),
+                        style: middleBetInfoStextStyle,
                       ),
                     ),
                     Expanded(
@@ -366,13 +248,7 @@ class FightHomeScreen extends StatelessWidget {
                       child: Text(
                         '100,000,000.00',
                         textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontSize: 10,
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 3.0,
-                          fontFamily: 'Roboto',
-                        ),
+                        style: wRightInfoTextStyle,
                       ),
                     ),
                   ],
@@ -383,6 +259,7 @@ class FightHomeScreen extends StatelessWidget {
                   children: <Widget>[
                     //QR ICON BUTTON
                     QRiconButton(
+                      cashierstatus: cashierstatus,
                       fullName: fullName,
                       passwordc1: passwordc1,
                       passwordc2: passwordc2,
@@ -392,7 +269,7 @@ class FightHomeScreen extends StatelessWidget {
                     ),
                     SizedBox(width: 10),
                     //NFC ICON BUTTON
-                    NFCiconButton(
+                    NFCBetIconButton(
                       fullName: fullName,
                       passwordc1: passwordc1,
                       passwordc2: passwordc2,

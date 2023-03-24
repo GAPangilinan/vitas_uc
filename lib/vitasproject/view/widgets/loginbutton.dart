@@ -5,6 +5,7 @@ import 'package:hive/hive.dart';
 import '../bet/fight_homescreen.dart';
 import '../cashin/cashin_homescreen.dart';
 import '../cashout/cashout_homescreen.dart';
+import '../constants.dart';
 
 class LoginButton extends StatefulWidget {
   TextEditingController? emailController = TextEditingController();
@@ -84,6 +85,7 @@ class _LoginButtonState extends State<LoginButton> {
         });
 
         if (emailController!.text != '' || passwordController!.text != '') {
+          print(emailController!.text);
           if (passwordc1 != null || passwordc2 != null || passwordc3 != null) {
             if (emailController!.text == 'cashier1' &&
                 passwordController!.text == passwordc1) {
@@ -185,10 +187,7 @@ class _LoginButtonState extends State<LoginButton> {
       },
       child: const Text(
         "LOGIN",
-        style: TextStyle(
-          fontSize: 20,
-          color: Colors.white,
-        ),
+        style: loginButtonTextStyle,
       ),
       color: Color.fromRGBO(30, 170, 241, 1),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../constants.dart';
 import '../screens/sign_in.dart';
 
 class SubmitButton extends StatefulWidget {
@@ -151,10 +152,7 @@ class _SubmitButtonState extends State<SubmitButton> {
       },
       child: Text(
         'SUBMIT',
-        style: TextStyle(
-          fontSize: 20,
-          color: Colors.white,
-        ),
+        style: submitButtonTextStyle,
       ),
       color: Color.fromRGBO(30, 170, 241, 1),
     );

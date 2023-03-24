@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../constants.dart';
+
 class AmountRow2 extends StatelessWidget {
   int amount = 0;
   int maxBet = 10000;
@@ -15,7 +17,7 @@ class AmountRow2 extends StatelessWidget {
           // height: 40,
           // width: 75,
           height: MediaQuery.of(context).size.height * 0.06,
-          width: MediaQuery.of(context).size.width * 0.213,
+          width: MediaQuery.of(context).size.width * 0.210,
           child: MaterialButton(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10.0))),
@@ -29,11 +31,7 @@ class AmountRow2 extends StatelessWidget {
             },
             child: Text(
               '2000',
-              style: TextStyle(
-                letterSpacing: 2.0,
-                fontSize: 15,
-                color: Colors.white,
-              ),
+              style: amountButtonTextStyle,
             ),
             color: Color.fromRGBO(53, 183, 54, 1),
           ),
@@ -43,7 +41,7 @@ class AmountRow2 extends StatelessWidget {
           // height: 40,
           // width: 75,
           height: MediaQuery.of(context).size.height * 0.06,
-          width: MediaQuery.of(context).size.width * 0.213,
+          width: MediaQuery.of(context).size.width * 0.210,
           child: MaterialButton(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10.0))),
@@ -57,11 +55,7 @@ class AmountRow2 extends StatelessWidget {
             },
             child: Text(
               '3000',
-              style: TextStyle(
-                letterSpacing: 2.0,
-                fontSize: 15,
-                color: Colors.white,
-              ),
+              style: amountButtonTextStyle,
             ),
             color: Color.fromRGBO(53, 183, 54, 1),
           ),
@@ -71,7 +65,7 @@ class AmountRow2 extends StatelessWidget {
           // height: 40,
           // width: 75,
           height: MediaQuery.of(context).size.height * 0.06,
-          width: MediaQuery.of(context).size.width * 0.213,
+          width: MediaQuery.of(context).size.width * 0.210,
           child: MaterialButton(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10.0))),
@@ -85,11 +79,7 @@ class AmountRow2 extends StatelessWidget {
             },
             child: Text(
               '5000',
-              style: TextStyle(
-                letterSpacing: 2.0,
-                fontSize: 15,
-                color: Colors.white,
-              ),
+              style: amountButtonTextStyle,
             ),
             color: Color.fromRGBO(53, 183, 54, 1),
           ),
@@ -99,7 +89,7 @@ class AmountRow2 extends StatelessWidget {
           // height: 40,
           // width: 75,
           height: MediaQuery.of(context).size.height * 0.06,
-          width: MediaQuery.of(context).size.width * 0.213,
+          width: MediaQuery.of(context).size.width * 0.210,
           child: MaterialButton(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10.0))),
@@ -113,11 +103,7 @@ class AmountRow2 extends StatelessWidget {
             },
             child: Text(
               'Max',
-              style: TextStyle(
-                letterSpacing: 2.0,
-                fontSize: 15,
-                color: Colors.white,
-              ),
+              style: amountButtonTextStyle,
             ),
             color: Color.fromRGBO(53, 183, 54, 1),
           ),

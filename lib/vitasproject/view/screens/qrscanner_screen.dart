@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -60,11 +59,12 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
   String? resultcode;
 
   QRViewController? controller;
-  final GlobalKey qrKey = GlobalKey(/*debugLabel: 'QR'*/);
+  final GlobalKey qrKey = GlobalKey();
 
   void _onQRViewCreated(QRViewController controller) {
     setState(() => this.controller = controller);
     controller.scannedDataStream.listen((scanData) {
+      print(cashierstatus);
       setState(() {
         result = scanData;
         if (cashierstatus == 'CASH IN') {
@@ -233,7 +233,6 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
                     TextButton(
                       child: Text('Ok'),
                       onPressed: () {
-                        //Need conditional statement for who is the current user that had logged in
                         Get.to(CashinHomeScreen());
                       },
                     ),
@@ -244,7 +243,6 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
           }
         }
       });
-      //Get.to(CashinBetScreen());
     });
   }
 
@@ -259,16 +257,15 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
     }
   }
 
-  // Future readQr() async {
-  //   if (result != null) {
-  //     controller!.pauseCamera();
-  //     setState(() {
-  //       print(result!.code);
-  //       controller!.dispose();
-  //     });
-
-  //   }
-  // }
+  Future readQr() async {
+    if (result != null) {
+      controller!.pauseCamera();
+      setState(() {
+        print(result!.code);
+        controller!.dispose();
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -288,9 +285,9 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
     );
   }
 
-  // @override
-  // void dispose() {
-  //   controller?.dispose();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    controller?.dispose();
+    super.dispose();
+  }
 }

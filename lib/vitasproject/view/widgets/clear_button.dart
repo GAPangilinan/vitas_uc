@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
+
 class ClearButton extends StatelessWidget {
   TextEditingController? amountController = TextEditingController();
   int? FinalResultAmount;
@@ -11,7 +13,7 @@ class ClearButton extends StatelessWidget {
       child: MaterialButton(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(10.0))),
-        minWidth: 185,
+        minWidth: 176,
         elevation: 100,
         // height: 53,
         height: MediaQuery.of(context).size.height / 15,
@@ -21,11 +23,7 @@ class ClearButton extends StatelessWidget {
         },
         child: Text(
           'CLEAR',
-          style: TextStyle(
-            letterSpacing: 2.0,
-            fontSize: 15,
-            color: Colors.white,
-          ),
+          style: clearButtonTextStyle,
         ),
         color: Color.fromRGBO(67, 67, 67, 1),
       ),

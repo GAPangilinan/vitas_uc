@@ -3,7 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:vitas_uc/vitasproject/view/constants.dart';
 import 'package:vitas_uc/vitasproject/view/screens/sign_in.dart';
+
+import '../../logger.dart';
 // import 'package:vitas_uc/vitasproject/view/screens/register.dart';
 
 class LoadingScreen extends StatefulWidget {
@@ -14,10 +17,13 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
+  // final log = logger(LoadingScreen);
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    ///// log.e('Error message');
     Timer(Duration(seconds: 3), () => Get.to(SignIn())
         // Navigator.of(context).pushReplacement(
         //     MaterialPageRoute(builder: (BuildContext context) => Register()))
@@ -31,17 +37,14 @@ class _LoadingScreenState extends State<LoadingScreen> {
       body: SafeArea(
         child: Container(
           width: MediaQuery.of(context).size.width * 1,
-          decoration: Background(),
+          decoration: bgImage,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
                 // height: 300,
-                height: MediaQuery.of(context).size.height * 0.5,
-                decoration: BoxDecoration(
-                  image:
-                      DecorationImage(image: AssetImage('assets/splash.png')),
-                ),
+                height: MediaQuery.of(context).size.height * 0.4,
+                decoration: bgSplash,
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.1),
               LinearPercentIndicator(
@@ -55,13 +58,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
           ),
         ),
       ),
-    );
-  }
-
-  BoxDecoration Background() {
-    return BoxDecoration(
-      image: DecorationImage(
-          image: AssetImage('assets/background.jpg'), fit: BoxFit.cover),
     );
   }
 }

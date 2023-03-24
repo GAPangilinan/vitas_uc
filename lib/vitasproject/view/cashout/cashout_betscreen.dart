@@ -1,22 +1,20 @@
 import 'dart:convert';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
+// import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
-import 'package:provider/provider.dart';
-// import 'package:vitas_uc/vitasproject/view/models/vitasmodel.dart';
-//import 'package:vitas_uc/vitasproject/services/auth.dart';
-// import 'package:vitas_uc/vitasproject/services/database.dart';
-import 'package:vitas_uc/vitasproject/view/cashout/cashout_homescreen.dart';
-import 'package:vitas_uc/vitasproject/view/screens/sign_in.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart' as http;
+import 'package:vitas_uc/vitasproject/view/constants.dart';
 import 'package:vitas_uc/vitasproject/view/widgets/cashout_button.dart';
 
-import '../widgets/cancel_button.dart';
+import '../widgets/cancel_cashout_button.dart';
 import '../widgets/clear_button.dart';
 import '../widgets/components/amount_row1.dart';
 import '../widgets/components/amount_row2.dart';
 import '../widgets/components/input_amount.dart';
+import 'cashout_homescreen.dart';
 
 class CashoutBetScreen extends StatelessWidget {
   // const CashoutBetScreen({super.key});
@@ -84,12 +82,53 @@ class CashoutBetScreen extends StatelessWidget {
     }
   }
 
+  // Future<void> initPayment(
+  //     {required String fullName,
+  //     required double amountPayment,
+  //     required BuildContext context}) async {
+  //   try {
+  //     // 1. Create a payment intent on the server
+  //     final response = await http.post(
+  //         Uri.parse(
+  //             'https://us-central1-vitas-796ff.cloudfunctions.net/stripePaymentIntentRequest'),
+  //         body: {
+  //           'fullname': fullName,
+  //           'amountPayment': amountPayment.toString(),
+  //         });
+  //     final jsonResponse = jsonDecode(response.body);
+
+  //     // 2. Initialize the payment sheet
+  //     await Stripe.instance.initPaymentSheet(
+  //         paymentSheetParameters: SetupPaymentSheetParameters(
+  //       paymentIntentClientSecret: jsonResponse['paymentIntent'],
+  //       merchantDisplayName: 'VITAS',
+  //       customerId: jsonResponse['customer'],
+  //       customerEphemeralKeySecret: jsonResponse['ephemeralKey'],
+  //     ));
+
+  //     await Stripe.instance.presentPaymentSheet();
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //         const SnackBar(content: const Text('Payment is successful')));
+  //   } catch (e) {
+  //     if (e is StripeException) {
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //         SnackBar(
+  //           content: Text('An error occured ${e.error.localizedMessage}'),
+  //         ),
+  //       );
+  //     } else {
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //         SnackBar(
+  //           content: Text('An error occured $e'),
+  //         ),
+  //       );
+  //     }
+  //   }
+  // }
+
   //final AuthService _auth = AuthService();
   final formKey = GlobalKey<FormState>();
   TextEditingController amountController = TextEditingController();
-  int maxBet = 10000;
-  int numOne = 0;
-  int amount = 0;
   int fee = 50;
 
   @override
@@ -102,29 +141,22 @@ class CashoutBetScreen extends StatelessWidget {
       backgroundColor: Color.fromRGBO(62, 58, 57, 1),
       body: SafeArea(
         child: SingleChildScrollView(
+          //BACKGROUND IMAGE
           child: Container(
             height: MediaQuery.of(context).size.height * 1,
-            // height: MediaQuery.of(context).size.height / 1.1,
             padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 15.0),
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/background.jpg'),
-                fit: BoxFit.cover,
-              ),
-            ),
+            decoration: bgImage,
             child: Column(
               children: <Widget>[
                 SizedBox(height: 0),
+                //LOGO
                 Container(
                   // height: 120,
                   height: MediaQuery.of(context).size.height * 0.15,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/logo.png'),
-                    ),
-                  ),
+                  decoration: bgLogo,
                 ),
                 SizedBox(height: 0),
+                //CARD ACCOUNT HEADER
                 Container(
                   child: FutureBuilder(
                     future: getPaycardData(),
@@ -141,8 +173,6 @@ class CashoutBetScreen extends StatelessWidget {
                             shrinkWrap: true,
                             itemCount: snapshot.data.length,
                             itemBuilder: (context, i) {
-                              //
-                              //
                               if (FinalResultAmount == null) {
                                 FinalResultAmount = 0;
                                 var valMinAmount =
@@ -153,11 +183,19 @@ class CashoutBetScreen extends StatelessWidget {
                                     totalBalance! - FinalResultAmount!;
                                 totalBalance = balanceMinAmount;
                               } else {
-                                //totalBalance = balance;
                                 var balMinFin =
                                     totalBalance! - FinalResultAmount!;
                                 totalBalance = balMinFin - fee;
                               }
+
+                              // Masking '#' the credit card number except last four(4) digits
+                              var creditCardNumber =
+                                  '${snapshot.data[i].cardnumber}';
+                              var creditCardLast4Digit =
+                                  creditCardNumber.substring(15);
+                              var controller = new MaskedTextController(
+                                  text: '', mask: '####-####-####-0000');
+                              controller.updateText('$creditCardLast4Digit');
 
                               return ListTile(
                                 title: Text(snapshot.data[i].cardnumber,
@@ -181,18 +219,11 @@ class CashoutBetScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 10),
+                //BLUE-BORDER LINE
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                   child: Container(
-                    decoration: BoxDecoration(
-                      border: Border(
-                        top: BorderSide(
-                          color: Colors.blueAccent,
-                          // width: 2.0,
-                          width: MediaQuery.of(context).size.width / 200,
-                        ),
-                      ),
-                    ),
+                    decoration: bbDecoration,
                   ),
                 ),
                 SizedBox(height: 10),
@@ -200,35 +231,24 @@ class CashoutBetScreen extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                   child: Row(
                     children: [
+                      //GREEN CASH OUT TEXT
                       Text(
                         'CASH OUT',
-                        style: TextStyle(
-                          fontSize: 19,
-                          color: Color.fromRGBO(54, 191, 54, 1),
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 3.0,
-                          fontFamily: 'Roboto',
-                        ),
+                        style: GreenTextStyle,
                       ),
                     ],
                   ),
                 ),
                 SizedBox(height: 10),
+                //BLUE-BORDER LINE
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                   child: Container(
-                    decoration: BoxDecoration(
-                      border: Border(
-                        top: BorderSide(
-                          color: Colors.blueAccent,
-                          // width: 2.0,
-                          width: MediaQuery.of(context).size.width / 200,
-                        ),
-                      ),
-                    ),
+                    decoration: bbDecoration,
                   ),
                 ),
                 SizedBox(height: 10),
+                //CASH-OUT INFORMATION
                 Row(
                   children: [
                     Text(
@@ -279,10 +299,120 @@ class CashoutBetScreen extends StatelessWidget {
                 AmountRow2(amountController: amountController),
                 SizedBox(height: 20),
                 //CASHOUT BUTTON
-                CashoutButton(
-                  amountController: amountController,
-                  FinalResultAmount: FinalResultAmount,
-                  totalBalance: totalBalance,
+                // CashoutButton(
+                //   amountController: amountController,
+                //   FinalResultAmount: FinalResultAmount,
+                //   totalBalance: totalBalance,
+                // ),
+                MaterialButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                  minWidth: 500,
+                  elevation: 100,
+                  // height: 53,
+                  height: MediaQuery.of(context).size.height / 15,
+                  onPressed: () async {
+                    if (amountController!.text.isNotEmpty) {
+                      FinalResultAmount = int.parse(amountController!.text);
+                      if (FinalResultAmount! <= totalBalance!) {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20.0)),
+                              ),
+                              title: Text('Cash In'),
+                              content: Text('Are you sure? \n\n' +
+                                  'Amount          :     ${FinalResultAmount}.00\n' +
+                                  'Bal. Before    :     ${totalBalance}.00\n' +
+                                  'Bal. After       :     ${totalBalance! - FinalResultAmount! - fee}.00\n' +
+                                  'Fee                 :     50.00\n' +
+                                  'Date               :     2022 08-04-02 03:48\n\n'),
+                              actions: [
+                                TextButton(
+                                  child: Text('Yes'),
+                                  onPressed: () {
+                                    // Get.to(CashoutHomeScreen(
+                                    //   FinalResultAmount: FinalResultAmount,
+                                    //   totalBalance: totalBalance,
+                                    // ));
+                                  },
+                                ),
+                                TextButton(
+                                  child: Text('No'),
+                                  onPressed: () {
+                                    Get.back();
+                                    amountController!.clear();
+                                    FinalResultAmount = 0;
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      } else if (FinalResultAmount! > totalBalance!) {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20.0)),
+                              ),
+                              icon: Icon(Icons.notifications),
+                              title: Text('Insufficient Balance'),
+                              content: Text(
+                                'You do not have enough balance to perform this transaction. Please check and try again or contact support on ibayadsupport@ibayad.com',
+                                textAlign: TextAlign.justify,
+                              ),
+                              actions: [
+                                TextButton(
+                                  child: Text('Ok'),
+                                  onPressed: () {
+                                    Get.back();
+                                    amountController!.clear();
+                                    FinalResultAmount = 0;
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      }
+                    } else {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20.0)),
+                            ),
+                            title: Text('Invalid Cash In'),
+                            content: Text(
+                                'Please enter the amount you want to cash in.'),
+                            actions: [
+                              TextButton(
+                                child: Text('Ok'),
+                                onPressed: () {
+                                  Get.back();
+                                  amountController!.clear();
+                                  FinalResultAmount = 0;
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
+                  },
+                  child: Text(
+                    'CASH IN',
+                    style: cashinButtonTextStyle,
+                  ),
+                  color: Color.fromRGBO(226, 32, 44, 1),
                 ),
                 SizedBox(height: 10),
                 Row(
@@ -294,7 +424,7 @@ class CashoutBetScreen extends StatelessWidget {
                     ),
                     SizedBox(width: 10),
                     //CANCEL BUTTON
-                    CancelButton(
+                    CancelCashoutButton(
                       passwordc1: passwordc1,
                       passwordc2: passwordc2,
                       passwordc3: passwordc3,
@@ -327,6 +457,59 @@ class CashoutBetScreen extends StatelessWidget {
   }
   */
 }
+
+// class PaymentDemo extends StatelessWidget {
+//   const PaymentDemo({super.key});
+
+//   Future<void> initPayment(
+//       {required String fullName,
+//       required double amountPayment,
+//       required BuildContext context}) async {
+//     try {
+//       // 1. Create a payment intent on the server
+//       final response = await http.post(
+//           Uri.parse(
+//               'https://us-central1-vitas-796ff.cloudfunctions.net/stripePaymentIntentRequest'),
+//           body: {
+//             'fullname': fullName,
+//             'amountPayment': amountPayment.toString(),
+//           });
+//       final jsonResponse = jsonDecode(response.body);
+
+//       // 2. Initialize the payment sheet
+//       await Stripe.instance.initPaymentSheet(
+//           paymentSheetParameters: SetupPaymentSheetParameters(
+//         paymentIntentClientSecret: jsonResponse['paymentIntent'],
+//         merchantDisplayName: 'VITAS',
+//         customerId: jsonResponse['customer'],
+//         customerEphemeralKeySecret: jsonResponse['ephemeralKey'],
+//       ));
+
+//       await Stripe.instance.presentPaymentSheet();
+//       ScaffoldMessenger.of(context).showSnackBar(
+//           const SnackBar(content: const Text('Payment is successful')));
+//     } catch (e) {
+//       if (e is StripeException) {
+//         ScaffoldMessenger.of(context).showSnackBar(
+//           SnackBar(
+//             content: Text('An error occured ${e.error.localizedMessage}'),
+//           ),
+//         );
+//       } else {
+//         ScaffoldMessenger.of(context).showSnackBar(
+//           SnackBar(
+//             content: Text('An error occured $e'),
+//           ),
+//         );
+//       }
+//     }
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return const Placeholder();
+//   }
+// }
 
 class Paycard {
   final String cardnumber;

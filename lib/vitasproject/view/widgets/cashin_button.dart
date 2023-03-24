@@ -1,15 +1,74 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:vitas_uc/vitasproject/view/cashin/cashin_betscreen.dart';
+import 'package:http/http.dart' as http;
 
 import '../cashin/cashin_homescreen.dart';
+import '../constants.dart';
 
 class CashinButton extends StatelessWidget {
   TextEditingController? amountController = TextEditingController();
+  String? resultcode;
   int? FinalResultAmount;
   int? totalBalance;
   CashinButton(
-      {this.amountController, this.FinalResultAmount, this.totalBalance});
+      {this.amountController,
+      this.FinalResultAmount,
+      this.totalBalance,
+      this.resultcode});
+  int? balance;
+
+  getPaycard() async {
+    var response1 = await http.get(Uri.https(
+        'my-json-server.typicode.com', '/schiZzyy/mockjson/paycard1'));
+    var response2 = await http.get(Uri.https(
+        'my-json-server.typicode.com', '/schiZzyy/mockjson/paycard2'));
+    var response3 = await http.get(Uri.https(
+        'my-json-server.typicode.com', '/schiZzyy/mockjson/paycard3'));
+
+    if (resultcode == '7019-4889-5501-4231') {
+      var jsonData = jsonDecode(response1.body);
+      List<Paycard> paycards = [];
+
+      for (var p in jsonData) {
+        Paycard paycard = Paycard(p["cardnumber"], p["balance"].toString());
+        String cardnumber = p["cardnumber"];
+        balance = p["balance"];
+        paycards.add(paycard);
+      }
+
+      print(paycards.length);
+      return paycards;
+    } else if (resultcode == '6980-7001-5563-4089') {
+      var jsonData = jsonDecode(response2.body);
+      List<Paycard> paycards = [];
+
+      for (var p in jsonData) {
+        Paycard paycard = Paycard(p["cardnumber"], p["balance"].toString());
+        String cardnumber = p["cardnumber"];
+        balance = p["balance"];
+        paycards.add(paycard);
+      }
+
+      print(paycards.length);
+      return paycards;
+    } else if (resultcode == '6819-5619-7287-4123') {
+      var jsonData = jsonDecode(response3.body);
+      List<Paycard> paycards = [];
+
+      for (var p in jsonData) {
+        Paycard paycard = Paycard(p["cardnumber"], p["balance"].toString());
+        String cardnumber = p["cardnumber"];
+        balance = p["balance"];
+        paycards.add(paycard);
+      }
+
+      print(paycards.length);
+      return paycards;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +82,20 @@ class CashinButton extends StatelessWidget {
         height: MediaQuery.of(context).size.height / 15,
         onPressed: () async {
           if (amountController!.text.isNotEmpty) {
+            //ilalagay ko dito yung formula ng totalBalance from cashin_betscreen
+            // if (FinalResultAmount == null) {
+            //   FinalResultAmount = 0;
+            //   var valMinAmount = balance! - FinalResultAmount!;
+            //   totalBalance = valMinAmount;
+            // } else {
+            //   var balanceMinAmount = totalBalance! - FinalResultAmount!;
+            //   totalBalance = balanceMinAmount;
+            // }
+            //testingin ko paguwi ni dadi or pagdating nung pos
             FinalResultAmount = int.parse(amountController!.text);
+            print('FinalResultAmount: ${FinalResultAmount}');
+            print('amountController: ${amountController!.text}');
+            print('totalBalance: ${totalBalance}');
             if (FinalResultAmount! <= totalBalance!) {
               showDialog(
                 context: context,
@@ -116,11 +188,7 @@ class CashinButton extends StatelessWidget {
         },
         child: Text(
           'CASH IN',
-          style: TextStyle(
-            letterSpacing: 2.0,
-            fontSize: 15,
-            color: Colors.white,
-          ),
+          style: cashinButtonTextStyle,
         ),
         color: Color.fromRGBO(226, 32, 44, 1),
       ),

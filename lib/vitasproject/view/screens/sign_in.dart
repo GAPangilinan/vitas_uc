@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -5,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:vitas_uc/vitasproject/view/cashin/cashin_homescreen.dart';
 import 'package:vitas_uc/vitasproject/view/cashout/cashout_homescreen.dart';
 import 'package:vitas_uc/vitasproject/view/bet/fight_homescreen.dart';
+import 'package:vitas_uc/vitasproject/view/constants.dart';
 import 'package:vitas_uc/vitasproject/view/screens/forgot_password.dart';
 import 'package:hive/hive.dart';
 import 'package:vitas_uc/vitasproject/view/widgets/loginbutton.dart';
@@ -20,9 +22,8 @@ class SignIn extends StatefulWidget {
   });
 
   @override
-  _SignInState createState() => _SignInState(passwordc1, passwordc2, passwordc3
-      // emailController, passwordController,
-      );
+  _SignInState createState() =>
+      _SignInState(passwordc1, passwordc2, passwordc3);
 }
 
 class _SignInState extends State<SignIn> {
@@ -37,7 +38,8 @@ class _SignInState extends State<SignIn> {
   final _formkey = GlobalKey<FormState>();
   TextEditingController emailController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
-  // final TextEditingController usernameController = new TextEditingController();
+
+  final _auth = FirebaseAuth.instance;
 
   late Box box1;
 
@@ -73,7 +75,6 @@ class _SignInState extends State<SignIn> {
     }
   }
 
-  final _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -112,17 +113,10 @@ class _SignInState extends State<SignIn> {
             children: <Widget>[
               Container(
                 height: MediaQuery.of(context).size.height * 1,
-                // height: MediaQuery.of(context).size.height / 1.1,
                 padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/background.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                decoration: bgImage,
                 child: Center(
                   child: Container(
-                    //margin: EdgeInsets.all(12),
                     child: Form(
                       key: _formkey,
                       child: Column(
@@ -133,44 +127,27 @@ class _SignInState extends State<SignIn> {
                           Container(
                             // height: 100,
                             height: MediaQuery.of(context).size.height * 0.2,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage('assets/logo.png'),
-                              ),
-                            ),
+                            decoration: bgLogo,
                           ),
                           SizedBox(height: 50),
                           Row(
                             children: [
                               Text(
                                 'Cashier Login',
-                                style: TextStyle(
-                                  fontSize: 28,
-                                  color: Color.fromRGBO(102, 102, 102, 1),
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: 3.0,
-                                  fontFamily: 'Roboto',
-                                ),
+                                style: CLStyle,
                               ),
                             ],
                           ),
                           SizedBox(height: 10),
+                          //BLUE-BORDER LINE
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                             child: Container(
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  top: BorderSide(
-                                    color: Colors.blueAccent,
-                                    // width: 2.0,
-                                    width:
-                                        MediaQuery.of(context).size.width / 200,
-                                  ),
-                                ),
-                              ),
+                              decoration: bbDecoration,
                             ),
                           ),
                           SizedBox(height: 20),
+                          //EMAIL TEXTFORMFIELD
                           TextFormField(
                             controller: emailController,
                             decoration: InputDecoration(
@@ -191,26 +168,10 @@ class _SignInState extends State<SignIn> {
                                 borderRadius: new BorderRadius.circular(10),
                               ),
                             ),
-                            // validator: (value) {
-                            //   if (value!.length == 0) {
-                            //     return "Email cannot be empty";
-                            //   }
-                            //   if (!RegExp(
-                            //           "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
-                            //       .hasMatch(value)) {
-                            //     return ("Please enter a valid email");
-                            //   } else {
-                            //     return null;
-                            //   }
-                            // },
-                            // onSaved: (Value) {
-                            //   setState(() {
-                            //     LoginModel(email: emailController.text);
-                            //   });
-                            // },
-                            //keyboardType: TextInputType.emailAddress,
+                            // keyboardType: ,
                           ),
                           SizedBox(height: 20),
+                          //PASSWORD TEXTFORMFIELD
                           TextFormField(
                             controller: passwordController,
                             obscureText: _isObscure3,
@@ -239,15 +200,10 @@ class _SignInState extends State<SignIn> {
                                 borderRadius: new BorderRadius.circular(10),
                               ),
                             ),
-                            // onSaved: (Value) {
-                            //   setState(() {
-                            //     LoginModel(password: passwordController.text);
-                            //   });
-                            // },
-                            // keyboardType: TextInputType.visiblePassword,
                           ),
                           Row(
                             children: [
+                              //CHECKBOX
                               Checkbox(
                                 value: isChecked,
                                 activeColor: Colors.blue,
@@ -258,7 +214,7 @@ class _SignInState extends State<SignIn> {
                                   });
                                 },
                               ),
-                              //CHECKBOX & REMEMBER ME TEXT BUTTON
+                              //REMEMBER ME TEXT BUTTON
                               TextButton(
                                 onPressed: () {
                                   setState(() {
@@ -272,23 +228,20 @@ class _SignInState extends State<SignIn> {
                                   ),
                                 ),
                               ),
-                              //SizedBox(width: 60),
+                              //FORGOT PASSWORD TEXT BUTTON
                               Padding(
-                                padding: const EdgeInsets.fromLTRB(70, 0, 0, 0),
+                                padding: const EdgeInsets.fromLTRB(50, 0, 0, 0),
                                 child: TextButton(
                                   child: const Text(
                                     'Forgot Password',
-                                    style: TextStyle(
-                                      color: Color.fromRGBO(102, 102, 102, 1),
-                                      decoration: TextDecoration.underline,
-                                      decorationThickness: 1.8,
-                                    ),
+                                    style: fpassTextStyle,
                                   ),
                                   onPressed: () {
                                     Get.to(ForgotPasswordPage(
-                                        passwordc1: passwordc1,
-                                        passwordc2: passwordc2,
-                                        passwordc3: passwordc3));
+                                        // passwordc1: passwordc1,
+                                        // passwordc2: passwordc2,
+                                        // passwordc3: passwordc3
+                                        ));
                                   },
                                 ),
                               ),
@@ -296,27 +249,153 @@ class _SignInState extends State<SignIn> {
                           ),
                           SizedBox(height: 20),
                           //LOGIN BUTTON
-                          LoginButton(
-                            emailController: emailController,
-                            passwordController: passwordController,
-                            passwordc1: passwordc1,
-                            passwordc2: passwordc2,
-                            passwordc3: passwordc3,
+                          // LoginButton(
+                          //   emailController: emailController,
+                          //   passwordController: passwordController,
+                          //   passwordc1: passwordc1,
+                          //   passwordc2: passwordc2,
+                          //   passwordc3: passwordc3,
+                          // ),
+                          MaterialButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0))),
+                            minWidth: 360,
+                            elevation: 100,
+                            // height: 53,
+                            height: MediaQuery.of(context).size.height / 12,
+                            onPressed: () async {
+                              setState(() {
+                                visible = true;
+                              });
+                              //FIREBASE SIGNIN
+                              signIn(emailController.text,
+                                  passwordController.text);
+                              print(emailController.text);
+                              print(passwordController.text);
+
+                              // if (emailController!.text != '' ||
+                              //     passwordController!.text != '') {
+                              //   print(emailController!.text);
+                              //   if (passwordc1 != null ||
+                              //       passwordc2 != null ||
+                              //       passwordc3 != null) {
+                              //     if (emailController!.text == 'cashier1' &&
+                              //         passwordController!.text == passwordc1) {
+                              //       Get.to(CashinHomeScreen(
+                              //           passwordc1: passwordc1,
+                              //           passwordc2: passwordc2,
+                              //           passwordc3: passwordc3));
+                              //     } else if (emailController!.text ==
+                              //             'cashier2' &&
+                              //         passwordController!.text == passwordc2) {
+                              //       Get.to(CashoutHomeScreen(
+                              //           passwordc1: passwordc1,
+                              //           passwordc2: passwordc2,
+                              //           passwordc3: passwordc3));
+                              //     } else if (emailController!.text ==
+                              //             'cashier3' &&
+                              //         passwordController!.text == passwordc3) {
+                              //       Get.to(FightHomeScreen(
+                              //           passwordc1: passwordc1,
+                              //           passwordc2: passwordc2,
+                              //           passwordc3: passwordc3));
+                              //     } else {
+                              //       showDialog(
+                              //           context: context,
+                              //           builder: (context) {
+                              //             return AlertDialog(
+                              //               shape: RoundedRectangleBorder(
+                              //                 borderRadius: BorderRadius.all(
+                              //                     Radius.circular(20.0)),
+                              //               ),
+                              //               icon: Icon(Icons.lock_open),
+                              //               title: Text('Invalid Credentials'),
+                              //               content: Text(
+                              //                   'The Username or Password you entered is incorrect'),
+                              //               actions: [
+                              //                 TextButton(
+                              //                   child: Text('Ok'),
+                              //                   onPressed: () {
+                              //                     Get.back();
+                              //                     emailController!.clear();
+                              //                     passwordController!.clear();
+                              //                     isChecked = false;
+                              //                   },
+                              //                 ),
+                              //               ],
+                              //             );
+                              //           });
+                              //     }
+                              //   } else {
+                              //     showDialog(
+                              //         context: context,
+                              //         builder: (context) {
+                              //           return AlertDialog(
+                              //             shape: RoundedRectangleBorder(
+                              //               borderRadius: BorderRadius.all(
+                              //                   Radius.circular(20.0)),
+                              //             ),
+                              //             icon: Icon(Icons.lock_open),
+                              //             title: Text('Invalid Credentials'),
+                              //             content: Text(
+                              //                 'The Username or Password you entered is incorrect'),
+                              //             actions: [
+                              //               TextButton(
+                              //                 child: Text('Ok'),
+                              //                 onPressed: () {
+                              //                   Get.back();
+                              //                   emailController!.clear();
+                              //                   passwordController!.clear();
+                              //                   isChecked = false;
+                              //                 },
+                              //               ),
+                              //             ],
+                              //           );
+                              //         });
+                              //   }
+                              // } else {
+                              //   showDialog(
+                              //       context: context,
+                              //       builder: (context) {
+                              //         return AlertDialog(
+                              //           shape: RoundedRectangleBorder(
+                              //             borderRadius: BorderRadius.all(
+                              //                 Radius.circular(20.0)),
+                              //           ),
+                              //           icon: Icon(Icons.lock_open),
+                              //           title:
+                              //               Text('Enter Username & Password'),
+                              //           content: Text(
+                              //               'Please Enter Username & Password before you Login'),
+                              //           actions: [
+                              //             TextButton(
+                              //               child: Text('Ok'),
+                              //               onPressed: () {
+                              //                 Get.back();
+                              //                 emailController!.clear();
+                              //                 passwordController!.clear();
+                              //                 isChecked = false;
+                              //               },
+                              //             ),
+                              //           ],
+                              //         );
+                              //       });
+                              // }
+                              checkRememberMe();
+                            },
+                            child: const Text(
+                              "LOGIN",
+                              style: loginButtonTextStyle,
+                            ),
+                            color: Color.fromRGBO(30, 170, 241, 1),
                           ),
                           SizedBox(height: 20),
+                          //BLUE-BORDER LINE
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                             child: Container(
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  top: BorderSide(
-                                    color: Colors.blueAccent,
-                                    // width: 2.0,
-                                    width:
-                                        MediaQuery.of(context).size.width / 200,
-                                  ),
-                                ),
-                              ),
+                              decoration: bbDecoration,
                             ),
                           ),
                         ],
@@ -333,7 +412,6 @@ class _SignInState extends State<SignIn> {
     );
   }
 
-/*
 // Method for determining who is the current log in user
   void route() {
     User? user = FirebaseAuth.instance.currentUser;
@@ -471,5 +549,5 @@ class _SignInState extends State<SignIn> {
         }
       }
     }
-  } */
+  }
 }

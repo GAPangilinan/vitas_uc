@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,17 +5,15 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:vitas_uc/vitasproject/view/cashin/cashin_betscreen.dart';
 import 'package:vitas_uc/vitasproject/view/cashout/cashout_betscreen.dart';
-// import 'package:vitas_uc/vitasproject/view/models/vitasmodel.dart';
-//import 'package:vitas_uc/vitasproject/services/auth.dart';
-// import 'package:vitas_uc/vitasproject/services/database.dart';
+import 'package:vitas_uc/vitasproject/view/constants.dart';
+
 import 'package:vitas_uc/vitasproject/view/screens/qrscanner_screen.dart';
 import 'package:vitas_uc/vitasproject/view/screens/sign_in.dart';
-import 'package:vitas_uc/vitasproject/view/widgets/nfc_icon.dart';
+import 'package:vitas_uc/vitasproject/view/widgets/nfc_cashin_icon.dart';
+import 'package:vitas_uc/vitasproject/view/widgets/nfc_reader.dart';
 import 'package:vitas_uc/vitasproject/view/widgets/qr_icon.dart';
 
 class CashinHomeScreen extends StatelessWidget {
-  //const HomeScreen({super.key});
-
   //final AuthService _auth = AuthService();
   String? fullName;
   String? passwordc1;
@@ -44,30 +41,23 @@ class CashinHomeScreen extends StatelessWidget {
       backgroundColor: Color.fromRGBO(62, 58, 57, 1),
       body: SafeArea(
         child: SingleChildScrollView(
+          //BACKGROUND IMAGE
           child: Container(
             height: MediaQuery.of(context).size.height * 1,
-            // height: MediaQuery.of(context).size.height / 1.1,
             padding:
                 const EdgeInsets.symmetric(vertical: 20.0, horizontal: 15.0),
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/background.jpg'),
-                fit: BoxFit.cover,
-              ),
-            ),
+            decoration: bgImage,
             child: Column(
               children: <Widget>[
                 SizedBox(height: 0),
+                //LOGO
                 Container(
                   // height: 120,
                   height: MediaQuery.of(context).size.height * 0.2,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/logo.png'),
-                    ),
-                  ),
+                  decoration: bgLogo,
                 ),
                 SizedBox(height: 30),
+                //CASHIER NAME
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                   child: Row(
@@ -75,15 +65,10 @@ class CashinHomeScreen extends StatelessWidget {
                       Text(
                         //fullName!,
                         'Juan Dela Cruz',
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Color.fromRGBO(102, 102, 102, 1),
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 2.0,
-                          fontFamily: 'Roboto',
-                        ),
+                        style: cnHeaderTextStyle,
                       ),
-                      SizedBox(width: 203),
+                      SizedBox(width: 153),
+                      //SIGN-OUT ICON
                       IconButton(
                         icon: Icon(Icons.login_rounded),
                         iconSize: 30,
@@ -102,42 +87,25 @@ class CashinHomeScreen extends StatelessWidget {
                 SizedBox(height: 0),
                 Row(
                   children: <Widget>[
+                    //CASHIER TEXT
                     Text(
                       'Cashier',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Color.fromRGBO(102, 102, 102, 1),
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 3.0,
-                        fontFamily: 'Roboto',
-                      ),
+                      style: ctaHeaderTextStyle,
                     ),
-                    SizedBox(width: 180),
+                    SizedBox(width: 160),
+                    //CASHIER AMOUNT
                     Text(
                       NumberFormat('#,###.00#', 'en-US').format(cashiermoney),
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Color.fromRGBO(102, 102, 102, 1),
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 3.0,
-                        fontFamily: 'Roboto',
-                      ),
+                      style: ctaHeaderTextStyle,
                     ),
                   ],
                 ),
                 SizedBox(height: 10),
+                //BLUE-BORDER LINE
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                   child: Container(
-                    decoration: BoxDecoration(
-                      border: Border(
-                        top: BorderSide(
-                          color: Colors.blueAccent,
-                          // width: 2.0,
-                          width: MediaQuery.of(context).size.width / 200,
-                        ),
-                      ),
-                    ),
+                    decoration: bbDecoration,
                   ),
                 ),
                 SizedBox(height: 10),
@@ -145,47 +113,29 @@ class CashinHomeScreen extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                   child: Row(
                     children: [
+                      //GREEN CASH IN TEXT
                       Text(
                         cashierstatus,
-                        style: TextStyle(
-                          fontSize: 19,
-                          color: Color.fromRGBO(54, 191, 54, 1),
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 3.0,
-                          fontFamily: 'Roboto',
-                        ),
+                        style: GreenTextStyle,
                       ),
                     ],
                   ),
                 ),
                 SizedBox(height: 10),
+                //BLUE-BORDER LINE
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                   child: Container(
-                    decoration: BoxDecoration(
-                      border: Border(
-                        top: BorderSide(
-                          color: Colors.blueAccent,
-                          // width: 2.0,
-                          width: MediaQuery.of(context).size.width / 200,
-                        ),
-                      ),
-                    ),
+                    decoration: bbDecoration,
                   ),
                 ),
+                //CASH-IN INFORMATION
                 SizedBox(height: 10),
                 Row(
                   children: [
                     Text(
                       'Important:',
-                      //textAlign: TextAlign.end,
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: Color.fromRGBO(102, 102, 102, 1),
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 3.0,
-                        fontFamily: 'Roboto',
-                      ),
+                      style: infoTextStyle,
                     ),
                   ],
                 ),
@@ -193,25 +143,13 @@ class CashinHomeScreen extends StatelessWidget {
                 Text(
                   'By using this cash in facility, you agree that the amount will be credited to your card with a minimum fee of (0.00).',
                   textAlign: TextAlign.justify,
-                  style: TextStyle(
-                    fontSize: 10,
-                    color: Color.fromRGBO(102, 102, 102, 1),
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 3.0,
-                    fontFamily: 'Roboto',
-                  ),
+                  style: infoTextStyle,
                 ),
                 SizedBox(height: 10),
                 Text(
                   'Upon confirmation of the transaction, the amount credited to the card is non refundable and can not be reversed.',
                   textAlign: TextAlign.justify,
-                  style: TextStyle(
-                    fontSize: 10,
-                    color: Color.fromRGBO(102, 102, 102, 1),
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 3.0,
-                    fontFamily: 'Roboto',
-                  ),
+                  style: infoTextStyle,
                 ),
                 SizedBox(height: 10),
                 Row(
@@ -219,6 +157,7 @@ class CashinHomeScreen extends StatelessWidget {
                   children: <Widget>[
                     //QR ICON BUTTON
                     QRiconButton(
+                      cashierstatus: cashierstatus,
                       fullName: fullName,
                       passwordc1: passwordc1,
                       passwordc2: passwordc2,
@@ -228,7 +167,7 @@ class CashinHomeScreen extends StatelessWidget {
                     ),
                     SizedBox(width: 10),
                     //NFC ICON BUTTON
-                    NFCiconButton(
+                    NFCCashinIconButton(
                       fullName: fullName,
                       passwordc1: passwordc1,
                       passwordc2: passwordc2,
@@ -236,6 +175,7 @@ class CashinHomeScreen extends StatelessWidget {
                       totalBalance: totalBalance,
                       FinalResultAmount: FinalResultAmount,
                     ),
+                    // NFCReader(),
                   ],
                 ),
               ],

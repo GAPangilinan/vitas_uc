@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
-import '../cashin/cashin_betscreen.dart';
+import '../cashout/cashout_betscreen.dart';
 
-class NFCiconButton extends StatelessWidget {
+class NFCCashoutIconButton extends StatelessWidget {
   String? fullName;
   String? passwordc1;
   String? passwordc2;
   String? passwordc3;
   int? totalBalance;
   int? FinalResultAmount;
-  NFCiconButton(
+  NFCCashoutIconButton(
       {this.fullName,
       this.passwordc1,
       this.passwordc2,
@@ -27,7 +26,7 @@ class NFCiconButton extends StatelessWidget {
         child: Container(
           // height: 150,
           // width: 160,
-          height: MediaQuery.of(context).size.height * 0.3,
+          height: MediaQuery.of(context).size.height * 0.2,
           width: MediaQuery.of(context).size.width * 0.37,
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -36,7 +35,7 @@ class NFCiconButton extends StatelessWidget {
           ),
         ),
         onTap: () {
-          Get.to(CashinBetScreen(
+          Get.to(CashoutBetScreen(
             fullName: fullName,
             passwordc1: passwordc1,
             passwordc2: passwordc2,

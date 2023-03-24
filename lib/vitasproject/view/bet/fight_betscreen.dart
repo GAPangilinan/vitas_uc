@@ -1,26 +1,21 @@
 import 'dart:convert';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
-import 'package:provider/provider.dart';
-//import 'package:vitas_uc/vitasproject/services/auth.dart';
-import 'package:vitas_uc/vitasproject/view/bet/fight_homescreen.dart';
-import 'package:vitas_uc/vitasproject/view/screens/sign_in.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart' as http;
-
-import '../widgets/cancel_button.dart';
+import 'package:vitas_uc/vitasproject/view/widgets/bet_button.dart';
+import '../constants.dart';
+import '../widgets/cancel_bet_button.dart';
 import '../widgets/cashin_button.dart';
 import '../widgets/clear_button.dart';
 import '../widgets/components/amount_row1.dart';
 import '../widgets/components/amount_row2.dart';
 import '../widgets/components/input_amount.dart';
-
-// import '../models/vitasmodel.dart';
-// import '../../services/database.dart';
+import 'fight_homescreen.dart';
 
 class FightBetScreen extends StatelessWidget {
-  // const FightBetScreen({super.key});
   String? passwordc1;
   String? passwordc2;
   String? passwordc3;
@@ -143,21 +138,25 @@ class FightBetScreen extends StatelessWidget {
                             shrinkWrap: true,
                             itemCount: snapshot.data.length,
                             itemBuilder: (context, i) {
-                              //
-                              //
                               if (FinalResultAmount == null) {
                                 FinalResultAmount = 0;
                                 var valMinAmount =
                                     balance! - FinalResultAmount!;
                                 totalBalance = valMinAmount;
                               } else {
-                                print(totalBalance);
-                                //totalBalance = balance;
                                 var balMinFin =
                                     totalBalance! - FinalResultAmount!;
                                 totalBalance = balMinFin;
                               }
 
+                              // Masking '#' the credit card number except last four(4) digits
+                              var creditCardNumber =
+                                  '${snapshot.data[i].cardnumber}';
+                              var creditCardLast4Digit =
+                                  creditCardNumber.substring(15);
+                              var controller = new MaskedTextController(
+                                  text: '', mask: '####-####-####-0000');
+                              controller.updateText('$creditCardLast4Digit');
                               return ListTile(
                                 title: Text(snapshot.data[i].cardnumber,
                                     style: TextStyle(
@@ -211,7 +210,7 @@ class FightBetScreen extends StatelessWidget {
                           fontFamily: 'Roboto',
                         ),
                       ),
-                      SizedBox(width: 180),
+                      SizedBox(width: 160),
                       Text(
                         'OPEN',
                         style: TextStyle(
@@ -397,10 +396,120 @@ class FightBetScreen extends StatelessWidget {
                 AmountRow2(amountController: amountController),
                 SizedBox(height: 20),
                 //CASH IN BUTTON
-                CashinButton(
-                    amountController: amountController,
-                    FinalResultAmount: FinalResultAmount,
-                    totalBalance: totalBalance),
+                // BetButton(
+                //     amountController: amountController,
+                //     FinalResultAmount: FinalResultAmount,
+                //     totalBalance: totalBalance),
+                MaterialButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                  minWidth: 500,
+                  elevation: 100,
+                  // height: 53,
+                  height: MediaQuery.of(context).size.height / 15,
+                  onPressed: () async {
+                    if (amountController!.text.isNotEmpty) {
+                      FinalResultAmount = int.parse(amountController!.text);
+                      if (FinalResultAmount! <= totalBalance!) {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20.0)),
+                              ),
+                              title: Text('Cash In'),
+                              content: Text('Are you sure? \n\n' +
+                                  'Amount          :     ${FinalResultAmount}.00\n' +
+                                  'Bal. Before    :     ${totalBalance}.00\n' +
+                                  'Bal. After       :     ${totalBalance! - FinalResultAmount!}.00\n' +
+                                  'Fee                 :     0.00\n' +
+                                  'Date               :     2022 08-04-02 03:48\n\n'),
+                              actions: [
+                                TextButton(
+                                  child: Text('Yes'),
+                                  onPressed: () {
+                                    Get.to(FightHomeScreen(
+                                      FinalResultAmount: FinalResultAmount,
+                                      totalBalance: totalBalance,
+                                    ));
+                                  },
+                                ),
+                                TextButton(
+                                  child: Text('No'),
+                                  onPressed: () {
+                                    Get.back();
+                                    amountController!.clear();
+                                    FinalResultAmount = 0;
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      } else if (FinalResultAmount! > totalBalance!) {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20.0)),
+                              ),
+                              icon: Icon(Icons.notifications),
+                              title: Text('Insufficient Balance'),
+                              content: Text(
+                                'You do not have enough balance to perform this transaction. Please check and try again or contact support on ibayadsupport@ibayad.com',
+                                textAlign: TextAlign.justify,
+                              ),
+                              actions: [
+                                TextButton(
+                                  child: Text('Ok'),
+                                  onPressed: () {
+                                    Get.back();
+                                    amountController!.clear();
+                                    FinalResultAmount = 0;
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      }
+                    } else {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20.0)),
+                            ),
+                            title: Text('Invalid Cash In'),
+                            content: Text(
+                                'Please enter the amount you want to cash in.'),
+                            actions: [
+                              TextButton(
+                                child: Text('Ok'),
+                                onPressed: () {
+                                  Get.back();
+                                  amountController!.clear();
+                                  FinalResultAmount = 0;
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
+                  },
+                  child: Text(
+                    'CASH IN',
+                    style: cashinButtonTextStyle,
+                  ),
+                  color: Color.fromRGBO(226, 32, 44, 1),
+                ),
                 SizedBox(height: 10),
                 Row(
                   children: <Widget>[
@@ -411,7 +520,7 @@ class FightBetScreen extends StatelessWidget {
                     ),
                     SizedBox(width: 10),
                     //CANCEL BUTTON
-                    CancelButton(
+                    CancelBetButton(
                       passwordc1: passwordc1,
                       passwordc2: passwordc2,
                       passwordc3: passwordc3,

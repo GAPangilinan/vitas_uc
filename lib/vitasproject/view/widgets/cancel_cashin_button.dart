@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../cashin/cashin_homescreen.dart';
+import '../constants.dart';
 
-class CancelButton extends StatelessWidget {
+class CancelCashinButton extends StatelessWidget {
   String? passwordc1;
   String? passwordc2;
   String? passwordc3;
   String? fullName;
   int? FinalResultAmount;
   int? totalBalance;
-  CancelButton(
+  CancelCashinButton(
       {this.passwordc1,
       this.passwordc2,
       this.passwordc3,
@@ -25,7 +25,7 @@ class CancelButton extends StatelessWidget {
       child: MaterialButton(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(10.0))),
-        minWidth: 185,
+        minWidth: 176,
         elevation: 100,
         // height: 53,
         height: MediaQuery.of(context).size.height / 15,
@@ -43,11 +43,7 @@ class CancelButton extends StatelessWidget {
         },
         child: Text(
           'CANCEL',
-          style: TextStyle(
-            letterSpacing: 2.0,
-            fontSize: 15,
-            color: Colors.white,
-          ),
+          style: cancelButtonTextStyle,
         ),
         color: Color.fromRGBO(67, 67, 67, 1),
       ),

@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:vitas_uc/vitasproject/view/bet/fight_homescreen.dart';
 
-import '../cashout/cashout_homescreen.dart';
 import '../constants.dart';
 
-class CashoutButton extends StatelessWidget {
+class BetButton extends StatelessWidget {
   TextEditingController? amountController = TextEditingController();
   int? FinalResultAmount;
   int? totalBalance;
-  CashoutButton(
-      {this.amountController, this.FinalResultAmount, this.totalBalance});
-
-  int fee = 50;
+  BetButton({this.amountController, this.FinalResultAmount, this.totalBalance});
 
   @override
   Widget build(BuildContext context) {
@@ -39,14 +35,14 @@ class CashoutButton extends StatelessWidget {
                     content: Text('Are you sure? \n\n' +
                         'Amount          :     ${FinalResultAmount}.00\n' +
                         'Bal. Before    :     ${totalBalance}.00\n' +
-                        'Bal. After       :     ${totalBalance! - FinalResultAmount! - fee}.00\n' +
-                        'Fee                 :     50.00\n' +
+                        'Bal. After       :     ${totalBalance! - FinalResultAmount!}.00\n' +
+                        'Fee                 :     0.00\n' +
                         'Date               :     2022 08-04-02 03:48\n\n'),
                     actions: [
                       TextButton(
                         child: Text('Yes'),
                         onPressed: () {
-                          Get.to(CashoutHomeScreen(
+                          Get.to(FightHomeScreen(
                             FinalResultAmount: FinalResultAmount,
                             totalBalance: totalBalance,
                           ));
